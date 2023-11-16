@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,8 +19,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Enregistrer dans un fichier texte" />
-                  <MenuItem mnemonicParsing="false" text="Envoi Couriel" />
+                  <MenuItem mnemonicParsing="false" onAction="#enregistrerDansUnFichier" text="Enregistrer dans un fichier texte" />
+                  <MenuItem mnemonicParsing="false" onAction="#envoiCourielView" text="Envoi Couriel" />
                   <MenuItem mnemonicParsing="false" text="Enregistrer dans la base de données" />
               <MenuItem mnemonicParsing="false" text="Quitter" />
             </items>
@@ -51,13 +52,14 @@
             <TextField fx:id="surfaceMin" layoutX="322.0" layoutY="132.0" prefHeight="26.0" prefWidth="106.0" promptText="m²" />
             <TextField fx:id="surfaceMax" layoutX="449.0" layoutY="132.0" prefHeight="26.0" prefWidth="106.0" promptText="m²" />
             <Button fx:id="recherche" layoutX="126.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleRechercheButton" text="Rechercher" />
-            <Button fx:id="effacer" layoutX="228.0" layoutY="187.0" mnemonicParsing="false" text="Effaçer" />
-            <CheckBox fx:id="seLoger" layoutX="621.0" layoutY="65.0" mnemonicParsing="false" text="SeLoger.com" />
+            <Button fx:id="effacer" layoutX="228.0" layoutY="187.0" mnemonicParsing="false" onAction="#effacerChamps" text="Effaçer" />
+            <CheckBox fx:id="seLogerBox" layoutX="621.0" layoutY="65.0" mnemonicParsing="false" text="SeLoger.com" />
             <CheckBox layoutX="621.0" layoutY="97.0" mnemonicParsing="false" text="Immonot.fr" />
-            <CheckBox fx:id="ouestFrance" layoutX="621.0" layoutY="132.0" mnemonicParsing="false" text="Ouestfrance-immo.com" />
-            <ProgressBar layoutX="120.0" layoutY="268.0" prefHeight="18.0" prefWidth="750.0" progress="0.0" />
+            <CheckBox fx:id="ouestFranceBox" layoutX="621.0" layoutY="132.0" mnemonicParsing="false" text="Ouestfrance-immo.com" />
+            <ProgressBar fx:id="progressBar" layoutX="120.0" layoutY="268.0" prefHeight="18.0" prefWidth="210.0" progress="0.0" />
             <Label layoutX="126.0" layoutY="243.0" text="Progression de la recherche" />
          </children>
       </AnchorPane>
+      <TextArea fx:id="annonces" prefHeight="476.0" prefWidth="1280.0" />
    </children>
 </VBox>
