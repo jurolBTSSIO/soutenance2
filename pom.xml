@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.cda.immobilier</groupId>
-    <artifactId>scrapper</artifactId>
+    <artifactId>soutenance2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Soutenance2</name>
 
@@ -31,6 +31,14 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.2.0</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit -->
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>

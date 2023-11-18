@@ -24,7 +24,7 @@ public class DaoFactory {
 
         DaoFactory instance = new DaoFactory(
                 // Connection a base de donnee
-                "jdbc:mysql://localhost:3306/tp_auth", "root", "");
+                "jdbc:mysql://localhost:3306/soutenance2", "root", "");
         return instance;
     }
 
@@ -32,7 +32,7 @@ public class DaoFactory {
         return DriverManager.getConnection(url, username, password);
     }
 
-    public AnnonceDaoImpl getUserDao() throws SQLException {
+    public AnnonceDaoImpl getAnnonceDao() throws SQLException {
         return new AnnonceDaoImpl(this);
     }
 

@@ -10,6 +10,28 @@ public class Annonce {
     private String description;
     private double prix;
     private double surface;
+    private int id_ville;
+    private int id_type;
+
+    /**
+     * Contructeur
+     * @param id
+     * @param titre
+     * @param description
+     * @param prix
+     * @param surface
+     * @param id_ville
+     * @param id_type
+     */
+    public Annonce(int id, String titre, String description, double prix, double surface, int id_ville, int id_type) {
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.prix = prix;
+        this.surface = surface;
+        this.id_ville = id_ville;
+        this.id_type = id_type;
+    }
 
     /**
      * Constructeur de la classe Annnonce
@@ -71,6 +93,22 @@ public class Annonce {
 
     public void setSurface(double surface) {
         this.surface = surface;
+    }
+
+    public int getId_ville() {
+        return id_ville;
+    }
+
+    public void setId_ville(int id_ville) {
+        this.id_ville = id_ville;
+    }
+
+    public int getId_type() {
+        return id_type;
+    }
+
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
     }
 
     /**

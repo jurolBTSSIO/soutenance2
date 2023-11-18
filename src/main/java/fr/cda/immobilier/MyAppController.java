@@ -218,6 +218,16 @@ public class MyAppController {
         stage.show();
     }
     @FXML
+    private void transmissionView() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(MyApp.class.getResource("transmissionBDD-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 200);
+        Stage stage = new Stage();
+        stage.setTitle("Transmission des données");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
     private void fermer() {
         Stage stage = (Stage) annonces.getScene().getWindow();
         stage.close();

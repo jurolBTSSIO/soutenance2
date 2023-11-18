@@ -21,7 +21,7 @@
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#enregistrerDansUnFichier" text="Enregistrer dans un fichier texte" />
                   <MenuItem mnemonicParsing="false" onAction="#envoiCourielView" text="Envoi Couriel" />
-                  <MenuItem mnemonicParsing="false" text="Enregistrer dans la base de données" />
+                  <MenuItem mnemonicParsing="false" onAction="#transmissionView" text="Enregistrer dans la base de données" />
               <MenuItem mnemonicParsing="false" onAction="#fermer" text="Quitter" />
             </items>
           </Menu>

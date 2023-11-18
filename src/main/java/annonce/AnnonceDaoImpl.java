@@ -11,7 +11,7 @@ public class AnnonceDaoImpl implements AnnonceDao{
         try {
             this.conn = daoFactory.getConnection();
         } catch (SQLException e) {
-            throw new SQLException("probleme driver manager ou acces bdd.");
+            e.printStackTrace();
         }
 
     }
@@ -19,12 +19,14 @@ public class AnnonceDaoImpl implements AnnonceDao{
     @Override
     public void add(Annonce annonce) {
         try {
-            String sql = "INSERT INTO annonce (titre, description, prix, surface) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO annonce (titre, description, prix, surface, id_ville, id_type) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, annonce.getTitre());
             statement.setString(2, annonce.getDescription());
             statement.setDouble(3, annonce.getPrix());
             statement.setDouble(4, annonce.getSurface());
+            statement.setInt(5, annonce.getId_ville());
+            statement.setInt(6, annonce.getId_type());
             statement.executeUpdate();
             statement.close();
         } catch (SQLException e) {
@@ -54,7 +56,7 @@ public class AnnonceDaoImpl implements AnnonceDao{
     public Annonce find(int id) {
         try {
             // Requete SQL
-            String sql = "SELECT * FROM utlilisateur WHERE id = ?";
+            String sql = "SELECT * FROM annonce WHERE id = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
