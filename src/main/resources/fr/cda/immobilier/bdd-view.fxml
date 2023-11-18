@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.cda.immobilier.BddController">
+   <children>
+      <Label layoutX="30.0" layoutY="14.0" text="Paramètre de la base de données" underline="true" wrapText="true" />
+      <GridPane layoutX="140.0" layoutY="84.0" prefHeight="152.0" prefWidth="319.0" vgap="30.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Nom du serveur :" />
+            <Label text="Nom de la BDD :" GridPane.rowIndex="1" />
+            <Label text="Password Utilisateur :" GridPane.rowIndex="4" />
+            <Label text="Numéro de Port de la BDD :" GridPane.rowIndex="2" />
+            <Label text="Login Utilisateur :" GridPane.rowIndex="3" />
+            <TextField fx:id="nomHote" prefHeight="26.0" prefWidth="75.0" promptText="Nom d'host ou adresse ip" GridPane.columnIndex="1" />
+            <TextField fx:id="nomBDD" promptText="Nom de la base de données" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="numPort" prefHeight="26.0" prefWidth="78.0" promptText="ex: 3306" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="login" promptText="Nom du login utilisateur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField fx:id="password" promptText="Mot de passe utilisateur" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <Button layoutX="233.0" layoutY="313.0" mnemonicParsing="false" onAction="#parametrerBDD" text="Valider" />
+      <Button layoutX="312.0" layoutY="313.0" mnemonicParsing="false" onAction="#fermerFenetre" text="Fermer" />
+   </children>
+</AnchorPane>

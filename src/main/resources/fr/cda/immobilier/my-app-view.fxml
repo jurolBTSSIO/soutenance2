@@ -22,12 +22,12 @@
                   <MenuItem mnemonicParsing="false" onAction="#enregistrerDansUnFichier" text="Enregistrer dans un fichier texte" />
                   <MenuItem mnemonicParsing="false" onAction="#envoiCourielView" text="Envoi Couriel" />
                   <MenuItem mnemonicParsing="false" text="Enregistrer dans la base de données" />
-              <MenuItem mnemonicParsing="false" text="Quitter" />
+              <MenuItem mnemonicParsing="false" onAction="#fermer" text="Quitter" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Paramètres">
             <items>
-              <MenuItem mnemonicParsing="false" text="Base de données" />
+              <MenuItem mnemonicParsing="false" onAction="#bddView" text="Base de données" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Aide">

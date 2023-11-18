@@ -207,4 +207,19 @@ public class MyAppController {
         envoiCourielController.setAnnonces(annonces);
         stage.show();
     }
+    @FXML
+    private void bddView() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(MyApp.class.getResource("bdd-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = new Stage();
+        stage.setTitle("Paramètrage de la base de données");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void fermer() {
+        Stage stage = (Stage) annonces.getScene().getWindow();
+        stage.close();
+    }
 }
