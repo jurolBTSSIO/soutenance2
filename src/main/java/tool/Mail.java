@@ -1,10 +1,15 @@
 package tool;
 
 import sendinblue.ApiClient;
+import sendinblue.ApiException;
 import sendinblue.Configuration;
 import sendinblue.auth.ApiKeyAuth;
 import sibApi.TransactionalEmailsApi;
 import sibModel.*;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +23,6 @@ public class Mail {
     private static final String EMAIL_SENDER = "tot@greta-bretagne-sud.fr";
     private static final String NAME_SENDER = "toto";
 
-    /**
-     * Methode qui envoie un mail quand un decouvert est depasse
-     * @param emailDest
-     */
     public static void sendEmail(String emailDest, String nomDest, String annonces) {
 
         // Configure l'API client SendinBlue
@@ -46,11 +47,19 @@ public class Mail {
             to.setName(nomDest);
             toList.add(to);
 
+            // J'attache un document
+            SendSmtpEmailAttachment attachment = new SendSmtpEmailAttachment();
+            attachment.setName("Annonce.txt");
+            byte[] encode = Files.readAllBytes(Paths.get("Annonce.txt"));
+            attachment.setContent(encode);
+            List<SendSmtpEmailAttachment> attachmentList = new ArrayList<SendSmtpEmailAttachment>();
+            attachmentList.add(attachment);
             // Crée un objet SendSmtpEmail pour définir le contenu de l'email
             SendSmtpEmail sendSmtpEmail = new SendSmtpEmail();
             sendSmtpEmail.setSender(sender);
             sendSmtpEmail.setTo(toList);
-            sendSmtpEmail.setHtmlContent("<html><body><p>" + annonces.replace("\n", "<br>") + "</p>" +
+            sendSmtpEmail.setAttachment(attachmentList);
+            sendSmtpEmail.setHtmlContent("<html><body><p></p>" +
                     "<p>Cordialement,</p>" +
                     "<br>" +
                     "<p>Mr Le Banquier.</p></body></html>");

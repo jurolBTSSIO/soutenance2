@@ -24,6 +24,7 @@ import java.util.List;
  * @author cda
  */
 public class MyAppController {
+    String filePath;
     private ObservableList<String> options =
             FXCollections.observableArrayList(
                     "Maison",
@@ -171,23 +172,13 @@ public class MyAppController {
      */
     @FXML
     private void enregistrerDansUnFichier() {
-        // J'ouvre un file chooser
-        FileChooser fileChooser = new FileChooser();
+        String cheminDuFichier = "Annonce.txt";
 
-        // Je lui donne un titre
-        fileChooser.setTitle("Enregistrer dans un fichier");
-
-        // Je gere l'extension
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers texte (*.txt)", "*.txt"));
-
-        File file = fileChooser.showSaveDialog(null);
-
-        if (file != null) {
-            try (FileWriter fileWriter = new FileWriter(file)) {
-                fileWriter.write(annonces.getText());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try (FileWriter fileWriter = new FileWriter(new File(cheminDuFichier))) {
+            fileWriter.write(annonces.getText());
+            filePath = cheminDuFichier;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -205,8 +196,15 @@ public class MyAppController {
         stage.setScene(scene);
         EnvoiCourielController envoiCourielController = fxmlLoader.getController();
         envoiCourielController.setAnnonces(annonces);
+        envoiCourielController.setFilePath(filePath);
         stage.show();
     }
+
+    /**
+     * Methode qui ouvre la vue de parametrage
+     * de la base de données
+     * @throws IOException
+     */
     @FXML
     private void bddView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -217,6 +215,12 @@ public class MyAppController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Methode qui ouvre la fenetre
+     * de transmission de données
+     * @throws IOException
+     */
     @FXML
     private void transmissionView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -227,6 +231,10 @@ public class MyAppController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Ferme la fenetre
+     */
     @FXML
     private void fermer() {
         Stage stage = (Stage) annonces.getScene().getWindow();
