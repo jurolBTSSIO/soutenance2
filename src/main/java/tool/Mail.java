@@ -1,18 +1,14 @@
 package tool;
 
 import sendinblue.ApiClient;
-import sendinblue.ApiException;
 import sendinblue.Configuration;
 import sendinblue.auth.ApiKeyAuth;
 import sibApi.TransactionalEmailsApi;
 import sibModel.*;
-
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Classe Mail
@@ -54,15 +50,18 @@ public class Mail {
             attachment.setContent(encode);
             List<SendSmtpEmailAttachment> attachmentList = new ArrayList<SendSmtpEmailAttachment>();
             attachmentList.add(attachment);
+
             // Crée un objet SendSmtpEmail pour définir le contenu de l'email
             SendSmtpEmail sendSmtpEmail = new SendSmtpEmail();
             sendSmtpEmail.setSender(sender);
             sendSmtpEmail.setTo(toList);
             sendSmtpEmail.setAttachment(attachmentList);
-            sendSmtpEmail.setHtmlContent("<html><body><p></p>" +
+            sendSmtpEmail.setHtmlContent("<html><body><p>      Bonjour Mr, Mme</p>" +
+                    "<p>Vous trouverez ci-joint le fichier avec les annonces</p>" +
+                    "<br>" +
                     "<p>Cordialement,</p>" +
                     "<br>" +
-                    "<p>Mr Le Banquier.</p></body></html>");
+                    "<p>Mr L'agent immobilier.</p></body></html>");
             sendSmtpEmail.setSubject("Annonces");
 
             // Envoie l'email

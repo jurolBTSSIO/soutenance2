@@ -3,6 +3,7 @@ package fr.cda.immobilier;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import com.gargoylesoftware.htmlunit.html.HtmlImage;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,8 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import tool.ScrappyBot;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,24 +26,33 @@ import java.util.List;
  */
 public class MyAppController {
     String filePath;
-    private ObservableList<String> options =
+    private ObservableList<String> optionsType =
             FXCollections.observableArrayList(
-                    "Maison",
-                    "Appartement",
-                    "Box"
+                    "maison",
+                    "appartement",
+                    "box"
+            );
+    private ObservableList<String> optionsVille =
+            FXCollections.observableArrayList(
+                    "vannes",
+                    "lorient",
+                    "brest",
+                    "quimper",
+                    "st-brieuc",
+                    "guingamp"
             );
     @FXML
     private ProgressBar progressBar;
+    @FXML
+    private ComboBox<String> localisation = new ComboBox<>();
     @FXML
     private ComboBox<String> types = new ComboBox<>();
     @FXML
     private TextArea annonces;
     @FXML
-    private TextField localisation;
+    private TextField prixMini;
     @FXML
-    private TextField budgetMin;
-    @FXML
-    private TextField budgetMax;
+    private TextField prixMaxi;
     @FXML
     private TextField surfaceMin;
     @FXML
@@ -61,10 +71,10 @@ public class MyAppController {
      */
     @FXML
     public void initialize() {
-        types.setItems(options);
+        types.setItems(optionsType);
+        localisation.setItems(optionsVille);
         //Liez l'activité du bouton de recherche à la sélection de la ComboBox
         recherche.disableProperty().bind(types.valueProperty().isNull());
-
     }
 
     /**
@@ -72,9 +82,8 @@ public class MyAppController {
      */
     @FXML
     private void effacerChamps() {
-        localisation.clear();
-        budgetMax.clear();
-        budgetMin.clear();
+        prixMaxi.clear();
+        prixMini.clear();
         surfaceMax.clear();
         surfaceMin.clear();
     }
@@ -109,56 +118,60 @@ public class MyAppController {
      * @return
      */
     public StringBuilder scrappyBot() {
-
+        // Variable pour le numero de la ville
+        String villeNum = null;
         // Je cree un stringbuilder
         StringBuilder retourRecherche = new StringBuilder();
 
-        // Mettre ici le code pour lancer la recherche en fonction des criteres
-        String url = "https://www.ouestfrance-immo.com/acheter/maison/quimper-29-29000/?prix=0_300000";
-
-        // Creation d'un webclient
-        WebClient client = new WebClient(BrowserVersion.FIREFOX);
-        client.addRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
-
-        // Parametrage des options
-        client.getOptions().setUseInsecureSSL(true);
-        client.getOptions().setCssEnabled(false);
-        client.getOptions().setJavaScriptEnabled(false);
-        client.getOptions().setTimeout(5000); // Set a timeout of 5 seconds
-        client.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        client.getOptions().setThrowExceptionOnScriptError(false);
-
+        // Je fais correspondre les villes et leurs numeros
+        switch (localisation.getValue()) {
+            case "vannes":
+                villeNum = "vannes-56-56000";
+                break;
+            case "lorient":
+                villeNum = "lorient-56-56100";
+                break;
+            case "brest":
+                villeNum = "brest-29-29200";
+                break;
+            case "quimper":
+                villeNum = "quimper-29-29000";
+                break;
+            case "st-brieuc":
+                villeNum = "st-brieuc-22-22000";
+                break;
+            case "guingamp":
+                villeNum = "guingamp-22-22220";
+                break;
+        }
+        // Je recupere la page web par son url
         try {
-            // Je recupere la page web par son url
-            HtmlPage page = client.getPage(url);
-
+            HtmlPage page = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilder(
+                    types.getValue(),
+                    villeNum,
+                    prixMini.getText(),
+                    prixMaxi.getText(),
+                    surfaceMin.getText(),
+                    surfaceMax.getText())
+            );
+            String[] balises = {
+                    "//div[@class='annBlocDesc']",
+                    "//span[@class='annTitre']",
+                    "//span[@class='annTexte hidden-phone']",
+                    "//span[@class='annPrix']",
+                    "//img[@class='annPhoto']"
+            };
             // Je recupere tous les titres d'annonces
-            List<HtmlElement> titres = page.getByXPath("//span[@class='annTitre']");
+            List<HtmlElement> divs = page.getByXPath(balises[0]);
 
             // Pour toutes les annonces je recupere le prix et la description
-            for (HtmlElement titre : titres) {
-                String annonceText = titre.asNormalizedText().trim();
-                System.out.println("Titre: " + annonceText);
-                retourRecherche.append("Titre: " + annonceText).append("\n");
-
-                // Trouver le parent div de l'annonce
-                HtmlElement parentDiv = (HtmlElement) titre.getParentNode();
-
-                // Trouver le parent au dessus de parentDiv
-                HtmlElement parentDiv2 = (HtmlElement) parentDiv.getParentNode();
-
-                // Acceder au prix à l'interieur du parent div
-                HtmlElement prixElement = parentDiv.getFirstByXPath(".//span[@class='annPrix']");
-                String price = prixElement != null ? prixElement.asNormalizedText().trim() : "N/A";
-                System.out.println("Prix: " + price);
-                retourRecherche.append("Prix: " + price).append("\n");
-
-                // Accéder à la description à l'intérieur du parent div
-                HtmlElement descriptionElement = parentDiv2.getFirstByXPath(".//span[@class='annTexte hidden-phone']");
-                String description = descriptionElement != null ? descriptionElement.asNormalizedText().trim() : "N/A";
-                System.out.println("Description: " + description);
-                retourRecherche.append("Description: " + description).append("\n");
-                System.out.println();
+            for (HtmlElement div : divs) {
+                HtmlElement titre = (HtmlElement) div.getFirstByXPath(balises[1]);
+                HtmlElement description = (HtmlElement) div.getFirstByXPath(balises[2]);
+                HtmlElement prix = (HtmlElement) div.getFirstByXPath(balises[3]);
+                HtmlElement parent = (HtmlElement) div.getParentNode();
+                HtmlElement image = (HtmlElement) parent.getFirstByXPath("//div[@class='img annPhoto']");
+                System.out.println(parent.asXml());
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -172,8 +185,11 @@ public class MyAppController {
      */
     @FXML
     private void enregistrerDansUnFichier() {
+
+        // Path local du fichier .txt
         String cheminDuFichier = "Annonce.txt";
 
+        // J'ajoute le contenu du text area annonces
         try (FileWriter fileWriter = new FileWriter(new File(cheminDuFichier))) {
             fileWriter.write(annonces.getText());
             filePath = cheminDuFichier;
@@ -196,7 +212,6 @@ public class MyAppController {
         stage.setScene(scene);
         EnvoiCourielController envoiCourielController = fxmlLoader.getController();
         envoiCourielController.setAnnonces(annonces);
-        envoiCourielController.setFilePath(filePath);
         stage.show();
     }
 
