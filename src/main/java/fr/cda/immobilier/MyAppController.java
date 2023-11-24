@@ -178,7 +178,7 @@ public class MyAppController {
         }
         // Je recupere la page web par son url
         try {
-            HtmlPage page = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilder(
+            HtmlPage page = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderOuestFrance(
                     types.getValue(),
                     villeNum,
                     prixMini.getText(),
@@ -218,7 +218,7 @@ public class MyAppController {
                 retourRecherche.append("Surface : ").append(surface).append("\n");
                 retourRecherche.append("Description : ").append(description).append("\n");
                 retourRecherche.append("Prix : ").append(prix).append("\n\n");
-                annonceList.add(new Annonce(titre, description, prix, surface, idVille, idType));
+                this.annonceList.add(new Annonce(titre, description, prix, surface, idVille, idType));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -295,6 +295,8 @@ public class MyAppController {
         Scene scene = new Scene(fxmlLoader.load(), 400, 200);
         Stage stage = new Stage();
         stage.setTitle("Transmission des données");
+        TransmissionBddController transmissionBddController = fxmlLoader.getController();
+        transmissionBddController.setAnnonceList(this.annonceList);
         stage.setScene(scene);
         stage.show();
     }

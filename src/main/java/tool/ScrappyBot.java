@@ -8,25 +8,26 @@ import com.gargoylesoftware.htmlunit.WebClient;
  * @author Julien Rolland
  */
 public class ScrappyBot {
+    private static WebClient webClient;
     /**
      * Methode qui retourne le WebClient
      * @return
      */
     public static WebClient getWebClient() {
         // Creation d'un webclient
-        WebClient client = new WebClient(BrowserVersion.FIREFOX);
-        client.addRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
+        webClient = new WebClient(BrowserVersion.FIREFOX);
+        webClient.addRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
 
         // Parametrage des options
-        client.getOptions().setUseInsecureSSL(true);
-        client.getOptions().setCssEnabled(false);
-        client.getOptions().setJavaScriptEnabled(false);
-        client.getOptions().setTimeout(5000);
-        client.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        client.getOptions().setThrowExceptionOnScriptError(false);
-        return client;
+        webClient.getOptions().setUseInsecureSSL(true);
+        webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setJavaScriptEnabled(false);
+        webClient.getOptions().setTimeout(5000);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
+        return webClient;
     }
-    public static String urlBuilder(String type, String ville, String prixMin, String prixMax, String surfaceMin, String surfaceMax) {
+    public static String urlBuilderOuestFrance(String type, String ville, String prixMin, String prixMax, String surfaceMin, String surfaceMax) {
         StringBuilder url = new StringBuilder();
         url.append("https://www.ouestfrance-immo.com/acheter/");
 

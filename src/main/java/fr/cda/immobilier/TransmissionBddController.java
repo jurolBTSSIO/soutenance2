@@ -8,26 +8,33 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransmissionBddController {
+    private List<Annonce> annonceList;
     @FXML
     private Button button;
+    @FXML
+    public void initialize() throws SQLException {
+
+    }
     @FXML
     private void validerTrasmission() throws SQLException {
         DaoFactory daoFactory = DaoFactory.getInstance();
         AnnonceDao annonceDao = daoFactory.getAnnonceDao();
-        Annonce annonce = new Annonce();
-        annonce.setTitre("titre1");
-        annonce.setDescription("description");
-        annonce.setPrix(50000);
-        annonce.setSurface(75);
-        annonce.setId_type(3);
-        annonce.setId_ville(1);
-        annonceDao.add(annonce);
+
+        for (Annonce annonce: annonceList) {
+            annonceDao.add(annonce);
+        }
     }
     @FXML
     private void fermerFenetre() {
         Stage stage = (Stage) button.getScene().getWindow();
         stage.close();
+    }
+
+    public void setAnnonceList(List<Annonce> annonceList) {
+        this.annonceList = annonceList;
     }
 }
