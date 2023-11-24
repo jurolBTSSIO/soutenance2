@@ -28,15 +28,15 @@ public class BddController {
      */
     @FXML
     private void parametrerBDD() {
-        // J'instancie un stringbuilder
-//        StringBuilder url = new StringBuilder();
-//        url.append("jdbc:mysql://" + nomHote.getText() + ":" + numPort.getText() + "/" + nomBDD.getText());
-//        DaoFactory daoFactory = DaoFactory.getInstance();
-//        daoFactory.setUsername(login.getText());
-//        daoFactory.setUrl(url.toString());
-//        daoFactory.setPassword(password.getText());
-//        Stage stage = (Stage) password.getScene().getWindow();
-//        stage.close();
+         //J'instancie un stringbuilder
+        StringBuilder url = new StringBuilder();
+        url.append("jdbc:mysql://" + nomHote.getText() + ":" + numPort.getText() + "/" + nomBDD.getText());
+        DaoFactory daoFactory = DaoFactory.getInstance();
+        daoFactory.setUsername(login.getText());
+        daoFactory.setUrl(url.toString());
+        daoFactory.setPassword(password.getText());
+        Stage stage = (Stage) password.getScene().getWindow();
+        stage.close();
     }
 
     /**

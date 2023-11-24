@@ -15,7 +15,6 @@ public class Annonce {
 
     /**
      * Contructeur
-     * @param id
      * @param titre
      * @param description
      * @param prix
@@ -23,8 +22,7 @@ public class Annonce {
      * @param id_ville
      * @param id_type
      */
-    public Annonce(int id, String titre, String description, double prix, double surface, int id_ville, int id_type) {
-        this.id = id;
+    public Annonce(String titre, String description, double prix, double surface, int id_ville, int id_type) {
         this.titre = titre;
         this.description = description;
         this.prix = prix;
@@ -35,14 +33,12 @@ public class Annonce {
 
     /**
      * Constructeur de la classe Annnonce
-     * @param id
      * @param titre
      * @param description
      * @param prix
      * @param surface
      */
-    public Annonce(int id, String titre, String description, double prix, double surface) {
-        this.id = id;
+    public Annonce( String titre, String description, double prix, double surface) {
         this.titre = titre;
         this.description = description;
         this.prix = prix;

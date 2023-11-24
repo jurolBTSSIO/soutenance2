@@ -1,72 +1,120 @@
-Titre: Maison 3 chambres
-Prix: 275 797 €
-Description: Nouveau à Quimper Cuzon : Terrain de 540 m2 dans un quartier résidentiel recherché. Proximité immédiate des commodités et...
-Titre: Maison 2 chambres
-Prix: 290 925 €
-Description: Installez-vous à Quimper sur ce terrain constructible, raccordable au tout à l'égoût, à viabiliser. Sa situation géographique...
-Titre: Maison 2 chambres
-Prix: 186 000 €
-Description: iad France - Nicolas Schleich vous propose : Ravissante maison de 2012 nichée dans la charmante ville de Quimper, réputée...
-Titre: Maison 2 chambres
-Prix: 199 000 €
-Description: Quimper agglomération sur la commune de BRIEC à seulement 12 min de la Capitale de la Cornouaille. Comment ne pas succomber...
-Titre: Maison 3 chambres
-Prix: 259 000 €
-Description: 29000 QUIMPER - Située à proximité du centre ville, à quelques pas du Cinéville , médiathèque , marché et de toutes commodités,...
-Titre: Maison 3 chambres
-Prix: 262 500 €
-Description: Quimper - maison avec 3 chambres et jardin Située dans une rue calme et sans issue dans le quartier de lududu , venez poser...
-Titre: Maison 3 chambres
-Prix: 275 000 €
-Description: Accès rapide voie expresse pour votre future construction. Sur ce terrain diverses possibilités. J'ai pris pour exemple ce...
-Titre: Maison 3 chambres
-Prix: 160 500 €
-Description: Venez découvrir cette charmante maison de ville des années 50 à 15 minutes de la Cathédrale St Corentin dans le quartier...
-Titre: Maison 5 chambres
-Prix: 275 600 €
-Description: QUIMPER, Secteur Kervilien - maison avec vie de plain-pied - Jolie maison édifiée sur une parcelle d'environ 630 m², comprenant...
-Titre: Maison 3 chambres
-Prix: 262 000 €
-Description: QUIMPER - Quartier du Merdy - Venez découvrir cette maison des années 60 bénéficiant d'une rénovation intégrale en 2023. Au...
-Titre: Maison 1 chambre
-Prix: 170 000 €
-Description: A VISITER AVEC L'AGENCE DE L'ODET DE QUIMPER TAPEZ 2 QUIMPER - LE MERDY - Venez découvrir cette maison des années 60 entièrement...
-Titre: Maison 6 pièces
-Prix: 172 000 €
-Description: CENTRE-VILLE - Côté Beaux-Arts/Saint/Marc/Salonique, vaste immeuble d'environ 165m² à rénover.Avis aux investisseurs! Idéal...
-Titre: Maison 4 chambres
-Prix: 284 900 €
-Description: NOUVEAUTE CHAILLOUX IMMOBILIER - PRAT AR ROUZ Dans un quartier pavillonnaire et un environnement calme, cette maison récente...
-Titre: Maison
-Prix: 285 000 €
-Description: Les Ecrins de Quimper vous offrent un cadre de vie préservé au sein d'un environnement verdoyant à proximité immédiate du...
-Titre: Maison 4 chambres
-Prix: 176 500 €
-Description: 29000 QUIMPER – MAISON 4 CHAMBRES 111 m² HABITABLES – TERRAIN 360 m² – BELLES PRESTATIONS – VISITE IMMERSIVE À DISTANCE.efficity...
-Titre: Maison 3 chambres
-Prix: 234 300 €
-Description: Coup de coeur assuré pour cette maison de caractère offrant tout le confort nécessaire: bel espace de vie, sous-sol, 3 chambres...
-Titre: Maison 3 chambres
-Prix: 179 760 €
-Description: EXCLUSIVITE. Quimper sud au calme élevée sur sous-sol se niche cette jolie maison de famille qui n'attend que vous pour...
-Titre: Maison 4 chambres
-Prix: 215 900 €
-Description: À proximité de l'hôpital et du centre ville, belle maison familiale aux amples proportions.Elle vous offre en rez-de-chaussée...
-Titre: Maison 5 chambres
-Prix: 242 000 €
-Description: A VISITER AVEC L'AGENCE DE L'ODET QUIMPER TAPEZ 2 QUIMPER KERFEUNTEUN Maison sur sous-sol complet comprenant au rez-de-chaussée...
-Titre: Maison 2 chambres
-Prix: 189 925 € Prix en baisse
-Description: EXCLUSIVITE. Chemin du halage à pieds pour cette charmante maison des années 50 comprenant, un séjour cuisine, une salle...
-Titre: Maison 3 chambres
-Prix: 249 000 €
-Description: Sous compromis : Propriété se situant sur la commune de LANDUDEC à 15 min de Quimper et de Douarnenez.Venez découvrir cette...
-Titre: Maison 4 chambres
-Prix: 280 900 € Prix en baisse
-Description: QUIMPER - KERFEUNTEUN - A proximité immédiate des commodités à pied, maison édifiée sur un terrain d'environ 340m2. Elle...
-Titre: Maison 3 chambres
-Prix: 228 900 €
-Description: iad France - Martine Guichaoua vous propose : QUIMPER SUD, Venez découvrir cette jolie maison mitoyenne du côté garage, dans...
-Titre: Maison 2 chambres
-Prix: 162 000 €
-Description: À quelques encablures de l'ODET (secteur Cap Horn) se trouve cette ravissante maison cosy et atypique, avec son incroyable...
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : VENTE d'une maison F5 (124 m²) à QuimperPROCHE CENTRE-VILLE - MAISON 5 PIÈCES NEUVENous vous présentons cette maison de 5...
+Prix : 443 832 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : Maison 4 pièces (89 m²) en vente à QuimperPROCHE CENTRE-VILLE - MAISON 4 PIÈCES NEUVEÀ vendre : nous sommes heureux de vous...
+Prix : 364 661 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : VENTE d'une maison 4 pièces (94 m²) à QuimperPROCHE CENTRE-VILLE - MAISON 4 PIÈCES NEUVEÀ vendre : venez découvrir à Quimper...
+Prix : 368 223 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : Ce Terrain Constructible , viabilisé de 650 m² dans un environnement verdoyant proche du centre ville et de la route des...
+Prix : 407 005 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : Terrain Constructible à Quimper avec TRECOBAT Opportunité Exceptionnelle pour Votre Projet de Construction! Vous rêvez...
+Prix : 295 431 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : Nouveau à Quimper : Terrain de 450 m2 dans un quartier résidentiel recherché. Proximité immédiate des commodités et réseaux...
+Prix : 291 757 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : En plein coeur de Kerfeunteun, centre ville à pieds, venez visiter cette charmante maison sur sous-sol total. Elle n'attend...
+Prix : 218 325 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : Cette jolie maison des années 80 est implantée sur un grand jardin. Elle permet une vie de plain-pied et a bénéficié d’une...
+Prix : 345 000 €
+
+Ouestfrance-immo
+Titre : Maison 5 chambres
+Description : MAISON 6 PIÈCES AVEC JARDIN - PROCHE QUIMPER. . En vente : à PLONEIS (29710), venez découvrir cette maison de 6 pièces de...
+Prix : 369 500 €
+
+Ouestfrance-immo
+Titre : Maison 2 chambres
+Description : Nouvelle exclusivité Chailloux !! Secteur Moulin Vert, Nous vous proposons cette maison de 1949 modifiée par son extension...
+Prix : 138 500 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : QUIMPER - Secteur Garenne du loup. A proximité des commodités et du centre-ville à pied, maison édifiée sur un terrrain...
+Prix : 286 200 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : QUIMPER - Secteur de la Garenne du Loup. A proximité des commodités et du centre-ville à pied, maison édifiée sur un terrrain...
+Prix : 196 100 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : Quartier du MERDY, jolie maison familiale des années 70. Elle se compose de 3 chambres, une salle de bain, une salle d'eau,...
+Prix : 257 250 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : QUIMPER - GARE - Maison des années 50 avec de beaux volumes idéale pour une grande famille ou pour de l'investissement locatif....
+Prix : 259 700 €
+
+Ouestfrance-immo
+Titre : Maison 5 chambres
+Description : NOUVEAUTE ! Maison 5 chambres avec vie de plain pied.. Elle se compose au RDC d'une entrée avec un grand placard, une agréable...
+Prix : 347 600 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : Nouveauté, Quimper Sud, secteur prisé pour cette jolie maison 1930, non mitoyenne, offrant une entrée, séjour salon avec...
+Prix : 234 000 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : Quimper au Coeur du quartier de Kerfeunteun en impasse l'atypique maison familiale aux volumes généreux de 180 m2. Bâtie...
+Prix : 399 900 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : QUIMPER- SUD - Située en impasse, maison non mitoyenne élevée sur un sous-sol total et offrant une vie de plain-pied . Elle...
+Prix : 294 000 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : QUIMPER, Jolie maison proche centre (M31) - Proche du centre, maison de 2004 sur sous-sol complet, édifiée sur une parcelle...
+Prix : 338 400 €
+
+Ouestfrance-immo
+Titre : Maison 4 chambres
+Description : QUIMPER centre, Maison de 104 m² habitable, disposant d'une parcelle de terrain close d'environ 191 m² et deux parking.Exclusivité...
+Prix : 175 000 €
+
+Ouestfrance-immo
+Titre : Maison 4 pièces
+Description : Vous rêvez de construire la maison de vos rêves dans un cadre enchanteur ? Ne cherchez plus ! Ce terrain spacieux de 793...
+Prix : 381 500 €
+
+Ouestfrance-immo
+Titre : Maison 4 pièces
+Description : Vous rêvez de construire la maison de vos rêves dans un cadre enchanteur ? Ne cherchez plus ! Ce terrain spacieux de 793...
+Prix : 445 000 €
+
+Ouestfrance-immo
+Titre : Maison 2 chambres
+Description : QUIMPER (29000) - En plein coeur du quartier recherché de KERFEUNTEUN à proximité immédiate des commerces, commodités et...
+Prix : 222 000 €
+
+Ouestfrance-immo
+Titre : Maison 3 chambres
+Description : Kerfeunteun, à quelques minutes des commerces environnement privilégié pour cette maison située dans un quartier calme. Au...
+Prix : 233 200 €
+

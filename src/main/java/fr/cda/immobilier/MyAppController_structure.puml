@@ -1,0 +1,207 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "fr.cda.immobilier.MyAppController",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3565976 { 
+   	label=tool
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ScrappyBot3565976[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ScrappyBot</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ urlBuilder(type: String, ville: String, prixMin: String, prixMax: String, surfaceMin: String, surfaceMax: String): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_852246558 { 
+   	label=annonce
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Annonce852246558[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Annonce</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   description: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id_type: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id_ville: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prix: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   surface: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   titre: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AnnonceDaoImpl852246558[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AnnonceDaoImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   conn: Connection [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(annonce: Annonce)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ delete(id: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ find(id: int): Annonce</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(annonce: Annonce)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_98336 { 
+   	label=cda
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1518796677 { 
+   	label=immobilier
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   MyAppController379017447[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MyAppController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   annonceDao: AnnonceDao [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   annonceList: List&lt;Annonce&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   annonces: TextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   effacer: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   filePath: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   localisation: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   optionsType: ObservableList&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   optionsVille: ObservableList&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ouestFranceBox: CheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prixMaxi: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prixMini: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   progressBar: ProgressBar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   recherche: Button [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   seLogerBox: CheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   surfaceMax: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   surfaceMin: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   types: ComboBox&lt;String&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- bddView()</TD></TR>
+<TR><TD ALIGN="LEFT" >- effacerChamps()</TD></TR>
+<TR><TD ALIGN="LEFT" >- enregisterBdd()</TD></TR>
+<TR><TD ALIGN="LEFT" >- enregistrerDansUnFichier()</TD></TR>
+<TR><TD ALIGN="LEFT" >- envoiCourielView()</TD></TR>
+<TR><TD ALIGN="LEFT" >- fermer()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleRechercheButton()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initialize()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ scrappyBot(): StringBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >- transmissionView()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+MyAppController379017447 -> Annonce852246558[label="annonceList
+[0..*]"];
+MyAppController379017447 -> AnnonceDaoImpl852246558[arrowhead=none];
+MyAppController379017447 -> ScrappyBot3565976[label="scrappyBot() -> urlBuilder()"];
+    
+}
+@enduml
