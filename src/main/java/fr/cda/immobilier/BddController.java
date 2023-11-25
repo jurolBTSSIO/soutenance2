@@ -1,6 +1,6 @@
 package fr.cda.immobilier;
 
-import annonce.DaoFactory;
+import fr.cda.annonce.DaoFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;

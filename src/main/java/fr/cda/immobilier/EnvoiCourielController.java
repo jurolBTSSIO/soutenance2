@@ -5,7 +5,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sendinblue.ApiException;
-import tool.Mail;
+import fr.cda.tool.Mail;
 
 /**
  * Classe EnvoiCourielController

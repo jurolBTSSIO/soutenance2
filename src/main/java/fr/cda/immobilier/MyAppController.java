@@ -1,8 +1,10 @@
 package fr.cda.immobilier;
 
-import annonce.Annonce;
-import annonce.AnnonceDao;
-import annonce.DaoFactory;
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.WebClient;
+import fr.cda.annonce.Annonce;
+import fr.cda.annonce.AnnonceDao;
+import fr.cda.annonce.DaoFactory;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import javafx.collections.FXCollections;
@@ -13,7 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import tool.ScrappyBot;
+import fr.cda.tool.ScrappyBot;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -126,7 +128,8 @@ public class MyAppController {
      */
     public StringBuilder scrappyBot() {
         // Variable pour le numero de la ville
-        String villeNum = null;
+        String villeNumOf = null;
+        String villeNumSeloger = null;
 
         // Variable pour l'id du type
         int idType = 0;
@@ -140,27 +143,33 @@ public class MyAppController {
         // Je fais correspondre les villes et leurs numeros
         switch (localisation.getValue()) {
             case "vannes":
-                villeNum = "vannes-56-56000";
+                villeNumOf = "vannes-56-56000";
+                villeNumSeloger = "560260";
                 idVille = 1;
                 break;
             case "lorient":
-                villeNum = "lorient-56-56100";
+                villeNumOf = "lorient-56-56100";
+                villeNumSeloger = "560121";
                 idVille = 2;
                 break;
             case "brest":
-                villeNum = "brest-29-29200";
+                villeNumOf = "brest-29-29200";
+                villeNumSeloger = "290019";
                 idVille = 3;
                 break;
             case "quimper":
-                villeNum = "quimper-29-29000";
+                villeNumOf = "quimper-29-29000";
+                villeNumSeloger = "290232";
                 idVille = 4;
                 break;
             case "st-brieuc":
-                villeNum = "st-brieuc-22-22000";
+                villeNumOf = "st-brieuc-22-22000";
+                villeNumSeloger = "220278";
                 idVille = 5;
                 break;
             case "guingamp":
-                villeNum = "guingamp-22-22220";
+                villeNumOf = "guingamp-22-22220";
+                villeNumSeloger = "220070";
                 idVille = 6;
                 break;
         }
@@ -176,17 +185,27 @@ public class MyAppController {
                 idType = 3;
                 break;
         }
-        // Je recupere la page web par son url
+        // Je recupere la page web OF par son url
         try {
-            HtmlPage page = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderOuestFrance(
-                    types.getValue(),
-                    villeNum,
+//            HtmlPage page = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderOuestFrance(
+//                    types.getValue(),
+//                    villeNumOf,
+//                    prixMini.getText(),
+//                    prixMaxi.getText(),
+//                    surfaceMin.getText(),
+//                    surfaceMax.getText())
+//            );
+
+            HtmlPage pageSL = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderSeLoger(
+                    idType,
+                    villeNumSeloger,
                     prixMini.getText(),
                     prixMaxi.getText(),
                     surfaceMin.getText(),
-                    surfaceMax.getText())
-            );
-            String[] balises = {
+                    surfaceMax.getText()
+            ));
+
+            String[] balisesOF = {
                     "//div[starts-with(@id, 'annonce_')]",
                     ".//span[@class='annTitre']",
                     ".//span[@class='annTexte hidden-phone']",
@@ -194,32 +213,73 @@ public class MyAppController {
                     ".//img[@class='annPhoto']",
                     ".//span[@class='annCriteres']/div"
             };
-            // Je recupere tous les titres d'annonces
-            List<HtmlElement> divs = page.getByXPath(balises[0]);
+            String[] balisesSL = {
+                    "//div[@data-testid='sl.explore.card-container']",
+                    ".//div[@data-test='sl.title']",
+                    ".//div[@data-test='sl.address']",
+                    ".//div[@data-test='sl.price-label']",
+                    ".//img"
+            };
+            System.out.println(ScrappyBot.urlBuilderSeLoger(
+                    idType,
+                    villeNumSeloger,
+                    prixMini.getText(),
+                    prixMaxi.getText(),
+                    surfaceMin.getText(),
+                    surfaceMax.getText()
+            ));
 
-            // Pour toutes les annonces je recupere le prix et la description
-            for (HtmlElement div : divs) {
-                HtmlElement titreElement = (HtmlElement) div.getFirstByXPath(balises[1]);
-                String titre = titreElement.asNormalizedText().trim();
-                HtmlElement descriptionElement = (HtmlElement) div.getFirstByXPath(balises[2]);
+            List<HtmlElement> htmlElements = pageSL.getByXPath(balisesSL[0]);
+            //System.out.println(pageSL.asXml());
+            for (HtmlElement element: htmlElements) {
+                HtmlElement descriptionElement = (HtmlElement) element.getFirstByXPath(balisesSL[1]);
                 String description = descriptionElement.asNormalizedText().trim();
-                HtmlElement prixElement = (HtmlElement) div.getFirstByXPath(balises[3]);
+                HtmlElement lieuElement = (HtmlElement) element.getFirstByXPath(balisesSL[2]);
+                String lieu = lieuElement.asNormalizedText().trim();
+                HtmlElement prixElement = (HtmlElement) element.getFirstByXPath(balisesSL[3]);
+                HtmlElement imgElement = (HtmlElement) element.getFirstByXPath(balisesSL[4]);
+                String imageUrl = "";
+                if( imgElement != null) {
+                    imageUrl = imgElement.getAttribute("src");
+                }
+
                 String prixStr = prixElement.asNormalizedText().replace("€", "").trim();
-                double prix = Double.parseDouble(prixStr.replace(" ", ""));
-                HtmlElement surfaceElement = (HtmlElement) div.getFirstByXPath(balises[5]);
-                String surfaceStr = surfaceElement.asNormalizedText().replace("m²", "").trim();
-                double surface = Double.parseDouble(surfaceStr.replace(" ", ""));
-                HtmlElement parent = (HtmlElement) div.getParentNode();
-
-                HtmlElement imageElement = (HtmlElement) parent.getFirstByXPath("//img[@class='img annPhoto lazy']");
-
-                retourRecherche.append("Ouestfrance-immo\n");
-                retourRecherche.append("Titre : ").append(titre).append("\n");
-                retourRecherche.append("Surface : ").append(surface).append("\n");
+                retourRecherche.append("Site : seloger.com").append("\n");
+                retourRecherche.append("Lieu : ").append(lieu).append("\n");
                 retourRecherche.append("Description : ").append(description).append("\n");
-                retourRecherche.append("Prix : ").append(prix).append("\n\n");
-                this.annonceList.add(new Annonce(titre, description, prix, surface, idVille, idType));
+                retourRecherche.append("Prix : ").append(prixStr).append("\n");
+                retourRecherche.append("Url de l'image : ").append(imageUrl).append("\n\n");
             }
+
+
+
+//            // Je recupere tous les titres d'annonces de OF
+//            List<HtmlElement> divs = page.getByXPath(balisesOF[0]);
+//
+//            // Pour toutes les annonces je recupere le prix et la description
+//            for (HtmlElement div : divs) {
+//                HtmlElement titreElement = (HtmlElement) div.getFirstByXPath(balisesOF[1]);
+//                String titre = titreElement.asNormalizedText().trim();
+//                HtmlElement descriptionElement = (HtmlElement) div.getFirstByXPath(balisesOF[2]);
+//                String description = descriptionElement.asNormalizedText().trim();
+//                HtmlElement prixElement = (HtmlElement) div.getFirstByXPath(balisesOF[3]);
+//                String prixStr = prixElement.asNormalizedText().replace("€", "").trim();
+//                double prix = Double.parseDouble(prixStr.replace(" ", ""));
+//                HtmlElement surfaceElement = (HtmlElement) div.getFirstByXPath(balisesOF[5]);
+//                String surfaceStr = surfaceElement.asNormalizedText().replace("m²", "").trim();
+//                double surface = Double.parseDouble(surfaceStr.replace(" ", ""));
+//                HtmlElement parent = (HtmlElement) div.getParentNode();
+//
+//                HtmlElement imageElement = (HtmlElement) parent.getFirstByXPath("//img[@class='img annPhoto lazy']");
+//
+//                retourRecherche.append("Ouestfrance-immo\n");
+//                retourRecherche.append("Titre : ").append(titre).append("\n");
+//                retourRecherche.append("Surface : ").append(surface).append("\n");
+//                retourRecherche.append("Description : ").append(description).append("\n");
+//                retourRecherche.append("Prix : ").append(prix).append("\n\n");
+//                this.annonceList.add(new Annonce(titre, description, prix, surface, idVille, idType));
+//            }
+
         }catch(Exception e){
             e.printStackTrace();
         }

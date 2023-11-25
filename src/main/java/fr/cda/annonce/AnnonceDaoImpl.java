@@ -1,4 +1,4 @@
-package annonce;
+package fr.cda.annonce;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

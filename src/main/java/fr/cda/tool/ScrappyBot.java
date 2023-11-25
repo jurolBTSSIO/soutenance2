@@ -1,4 +1,4 @@
-package tool;
+package fr.cda.tool;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -15,16 +15,10 @@ public class ScrappyBot {
      */
     public static WebClient getWebClient() {
         // Creation d'un webclient
-        webClient = new WebClient(BrowserVersion.FIREFOX);
-        webClient.addRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
-
+        webClient = new WebClient(BrowserVersion.BEST_SUPPORTED);
         // Parametrage des options
-        webClient.getOptions().setUseInsecureSSL(true);
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setJavaScriptEnabled(false);
-        webClient.getOptions().setTimeout(5000);
-        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        webClient.getOptions().setThrowExceptionOnScriptError(false);
         return webClient;
     }
     public static String urlBuilderOuestFrance(String type, String ville, String prixMin, String prixMax, String surfaceMin, String surfaceMax) {
@@ -67,5 +61,8 @@ public class ScrappyBot {
         // J'ajoute la surface maxi
         url.append(surfaceMax);
         return url.toString();
+    }
+    public static String urlBuilderSeLoger(int type, String ville, String prixMin, String prixMax, String surfaceMin, String surfaceMax) {
+        return "https://www.seloger.com/list.htm?projects=2,5&types="+ String.valueOf(type)+"&natures=1,2,4&places=[{\"inseeCodes\":["+ ville +"]}]&price="+ prixMin +"/"+ prixMax +"&mandatorycommodities=0&enterprise=0&qsVersion=1.0&m=homepage_buy-redirection-search_results";
     }
 }

@@ -1,14 +1,13 @@
 package fr.cda.immobilier;
 
-import annonce.Annonce;
-import annonce.AnnonceDao;
-import annonce.DaoFactory;
+import fr.cda.annonce.Annonce;
+import fr.cda.annonce.AnnonceDao;
+import fr.cda.annonce.DaoFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TransmissionBddController {

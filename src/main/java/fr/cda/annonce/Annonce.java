@@ -1,4 +1,4 @@
-package annonce;
+package fr.cda.annonce;
 
 /**
  * Classe Annonce

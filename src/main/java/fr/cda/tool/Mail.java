@@ -1,4 +1,4 @@
-package tool;
+package fr.cda.tool;
 
 import sendinblue.ApiClient;
 import sendinblue.Configuration;
