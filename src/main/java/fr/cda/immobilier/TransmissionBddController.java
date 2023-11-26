@@ -26,6 +26,7 @@ public class TransmissionBddController {
         for (Annonce annonce: annonceList) {
             annonceDao.add(annonce);
         }
+        fermerFenetre();
     }
     @FXML
     private void fermerFenetre() {

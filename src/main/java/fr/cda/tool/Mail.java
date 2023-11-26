@@ -62,7 +62,7 @@ public class Mail {
                     "<p>Cordialement,</p>" +
                     "<br>" +
                     "<p>Mr L'agent immobilier.</p></body></html>");
-            sendSmtpEmail.setSubject("Annonces");
+            sendSmtpEmail.setSubject("Scrapping Immobilier");
 
             // Envoie l'email
             CreateSmtpEmail response = api.sendTransacEmail(sendSmtpEmail);

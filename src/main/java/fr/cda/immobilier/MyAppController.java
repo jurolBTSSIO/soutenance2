@@ -1,12 +1,13 @@
 package fr.cda.immobilier;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
+
+import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import fr.cda.annonce.Annonce;
 import fr.cda.annonce.AnnonceDao;
 import fr.cda.annonce.DaoFactory;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import fr.cda.tool.ScrappyBot;
 
@@ -103,23 +105,26 @@ public class MyAppController {
      */
     @FXML
     public void handleRechercheButton() {
+        progressBar.setProgress(0);
         Task<StringBuilder> task = new Task<>() {
             @Override
             protected StringBuilder call() {
                 return scrappyBot();
             }
-
             @Override
             protected void succeeded() {
                 annonces.setText(getValue().toString());
             }
-
             @Override
             protected void failed() {
-                System.out.println("erreur");
+                System.out.println("erreur dans le thread");
             }
         };
         new Thread(task).start();
+        // Exécuter une mise à jour de la barre de progression sur le thread de l'interface graphique
+        task.progressProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(() -> progressBar.setProgress(newValue.doubleValue()));
+        });
     }
 
     /**
@@ -187,15 +192,15 @@ public class MyAppController {
         }
         // Je recupere la page web OF par son url
         try {
-//            HtmlPage page = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderOuestFrance(
-//                    types.getValue(),
-//                    villeNumOf,
-//                    prixMini.getText(),
-//                    prixMaxi.getText(),
-//                    surfaceMin.getText(),
-//                    surfaceMax.getText())
-//            );
-
+            HtmlPage pageOF = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderOuestFrance(
+                    types.getValue(),
+                    villeNumOf,
+                    prixMini.getText(),
+                    prixMaxi.getText(),
+                    surfaceMin.getText(),
+                    surfaceMax.getText())
+            );
+            // Je recupere la page web SL par son url
             HtmlPage pageSL = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderSeLoger(
                     idType,
                     villeNumSeloger,
@@ -204,15 +209,16 @@ public class MyAppController {
                     surfaceMin.getText(),
                     surfaceMax.getText()
             ));
-
+            // Tableau des balises ouestfrance
             String[] balisesOF = {
-                    "//div[starts-with(@id, 'annonce_')]",
+                    "//a[@class='annLink']",
                     ".//span[@class='annTitre']",
                     ".//span[@class='annTexte hidden-phone']",
                     ".//span[@class='annPrix']",
                     ".//img[@class='annPhoto']",
                     ".//span[@class='annCriteres']/div"
             };
+            // Tableau des balises seloger
             String[] balisesSL = {
                     "//div[@data-testid='sl.explore.card-container']",
                     ".//div[@data-test='sl.title']",
@@ -220,39 +226,89 @@ public class MyAppController {
                     ".//div[@data-test='sl.price-label']",
                     ".//img"
             };
-            System.out.println(ScrappyBot.urlBuilderSeLoger(
-                    idType,
-                    villeNumSeloger,
-                    prixMini.getText(),
-                    prixMaxi.getText(),
-                    surfaceMin.getText(),
-                    surfaceMax.getText()
-            ));
 
-            List<HtmlElement> htmlElements = pageSL.getByXPath(balisesSL[0]);
-            //System.out.println(pageSL.asXml());
-            for (HtmlElement element: htmlElements) {
-                HtmlElement descriptionElement = (HtmlElement) element.getFirstByXPath(balisesSL[1]);
-                String description = descriptionElement.asNormalizedText().trim();
-                HtmlElement lieuElement = (HtmlElement) element.getFirstByXPath(balisesSL[2]);
-                String lieu = lieuElement.asNormalizedText().trim();
-                HtmlElement prixElement = (HtmlElement) element.getFirstByXPath(balisesSL[3]);
-                HtmlElement imgElement = (HtmlElement) element.getFirstByXPath(balisesSL[4]);
-                String imageUrl = "";
-                if( imgElement != null) {
-                    imageUrl = imgElement.getAttribute("src");
+            List<HtmlAnchor> htmlAnchors = pageOF.getByXPath("//*[@id=\"listAnnonces\"]/a");
+
+            for (HtmlAnchor htmlAnchor: htmlAnchors) {
+                double prixOF = 0;
+                String titreOF = "";
+                double surfaceOF = 0;
+                String descriptionOF = "";
+                HtmlPage pageAnnonce = (HtmlPage) htmlAnchor.click();
+                HtmlElement prixElement = (HtmlElement) pageAnnonce.getFirstByXPath(".//span[@class='price']");
+                // Je teste si l'element est null
+                if (prixElement != null ) {
+                    String prixStr = prixElement.asNormalizedText().replace("€", "").replace(" ", "");
+                    prixOF = Double.parseDouble(prixStr);
+                    System.out.println(prixOF);
                 }
-
-                String prixStr = prixElement.asNormalizedText().replace("€", "").trim();
-                retourRecherche.append("Site : seloger.com").append("\n");
-                retourRecherche.append("Lieu : ").append(lieu).append("\n");
-                retourRecherche.append("Description : ").append(description).append("\n");
-                retourRecherche.append("Prix : ").append(prixStr).append("\n");
-                retourRecherche.append("Url de l'image : ").append(imageUrl).append("\n\n");
+                HtmlElement titreElement = (HtmlElement) pageAnnonce.getFirstByXPath(".//h2[@class='annDescriptif fontDarkGrey']");
+                if (titreElement != null) {
+                    titreOF = titreElement.asNormalizedText();
+                    System.out.println(titreOF);
+                }
+                HtmlElement surfaceElement = (HtmlElement) pageAnnonce.getFirstByXPath(".//span[@class='visible-phone-inline-block ann-criteres']/div[1]");
+                if (surfaceElement != null) {
+                    surfaceOF =Double.parseDouble(surfaceElement.asNormalizedText().replace("m²", ""));
+                    System.out.println(surfaceOF);
+                }
+                HtmlElement descriptionElement = (HtmlElement) pageAnnonce.getFirstByXPath(".//div[@id='blockonDescriptif']");
+                if (descriptionElement != null) {
+                    descriptionOF = descriptionElement.asNormalizedText();
+                    System.out.println(descriptionOF);
+                }
             }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//            // Je récupère toutes les divs principales
+//            List<HtmlElement> htmlElements = pageSL.getByXPath(balisesSL[0]);
+//
+//            // Je boucle dessus pour recuperer ce qui m'interresse
+//            for (HtmlElement element: htmlElements) {
+//                // Description
+//                HtmlElement descriptionElement = (HtmlElement) element.getFirstByXPath(balisesSL[1]);
+//                String description = descriptionElement.asNormalizedText().trim();
+//                // Lieu
+//                HtmlElement lieuElement = (HtmlElement) element.getFirstByXPath(balisesSL[2]);
+//                String lieu = lieuElement.asNormalizedText().trim();
+//                // Prix
+//                HtmlElement prixElement = (HtmlElement) element.getFirstByXPath(balisesSL[3]);
+//                // Image
+//                HtmlElement imgElement = (HtmlElement) element.getFirstByXPath(balisesSL[4]);
+//                String imageUrl = "";
+//
+//                // Je teste si l'image est "null"
+//                if( imgElement != null) {
+//                    imageUrl = imgElement.getAttribute("src");
+//                }
+//                // Je ne recupere que la partie numerique du prix
+//                String prixStr = prixElement.asNormalizedText().replace("€", "").replace(" ", "").trim();
+//
+//                // J'ajoute tous au texte que je retourne
+//                retourRecherche.append("Site : seloger.com").append("\n");
+//                retourRecherche.append("Lieu : ").append(lieu).append("\n");
+//                retourRecherche.append("Description : ").append(description).append("\n");
+//                retourRecherche.append("Prix : ").append(prixStr).append("€").append("\n");
+//                retourRecherche.append("Url de l'image : ").append(imageUrl).append("\n\n");
+//                this.annonceList.add(new Annonce(lieu, description, Double.parseDouble(prixStr), 0, idVille, idType));
+//            }
+//
 //            // Je recupere tous les titres d'annonces de OF
 //            List<HtmlElement> divs = page.getByXPath(balisesOF[0]);
 //
@@ -264,7 +320,8 @@ public class MyAppController {
 //                String description = descriptionElement.asNormalizedText().trim();
 //                HtmlElement prixElement = (HtmlElement) div.getFirstByXPath(balisesOF[3]);
 //                String prixStr = prixElement.asNormalizedText().replace("€", "").trim();
-//                double prix = Double.parseDouble(prixStr.replace(" ", ""));
+//                String chiffresSeuls = prixStr.replaceAll("[^0-9]", "");
+//                double prix = Double.parseDouble(chiffresSeuls.replace(" ", ""));
 //                HtmlElement surfaceElement = (HtmlElement) div.getFirstByXPath(balisesOF[5]);
 //                String surfaceStr = surfaceElement.asNormalizedText().replace("m²", "").trim();
 //                double surface = Double.parseDouble(surfaceStr.replace(" ", ""));
@@ -279,6 +336,17 @@ public class MyAppController {
 //                retourRecherche.append("Prix : ").append(prix).append("\n\n");
 //                this.annonceList.add(new Annonce(titre, description, prix, surface, idVille, idType));
 //            }
+//
+//            // Je fais un update pour la barre de progression
+//            for (int i = 0; i < htmlElements.size() + divs.size(); i++) {
+//                // ... votre code existant
+//
+//                // Mettre à jour la progression à chaque itération
+//                double progress = (i + 1.0) / (htmlElements.size() + divs.size());
+//
+//                // Exécutez la mise à jour de la barre de progression sur le thread de l'interface graphique
+//                Platform.runLater(() -> progressBar.setProgress(progress));
+//            }
 
         }catch(Exception e){
             e.printStackTrace();
@@ -292,7 +360,25 @@ public class MyAppController {
      */
     @FXML
     private void enregistrerDansUnFichier() {
+        FileChooser fileChooser = new FileChooser();
 
+        // Configure le FileChooser
+        fileChooser.setTitle("Enregistrer le fichier");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers texte (*.txt)", "*.txt"));
+
+        // Affiche la boîte de dialogue Enregistrer
+        File selectedFile = fileChooser.showSaveDialog(new Stage());
+
+        // Si l'utilisateur a choisi un fichier
+        if (selectedFile != null) {
+            // J'ajoute le contenu du text area annonces
+            try (FileWriter fileWriter = new FileWriter(selectedFile)) {
+                fileWriter.write(annonces.getText());
+                filePath = selectedFile.getAbsolutePath();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         // Path local du fichier .txt
         String cheminDuFichier = "Annonce.txt";
 
@@ -304,12 +390,7 @@ public class MyAppController {
             e.printStackTrace();
         }
     }
-    @FXML
-    private void enregisterBdd() {
-        for (Annonce annonce : annonceList) {
-            annonceDao.add(annonce);
-        }
-    }
+
     /**
      * Methode qui ouvre une fenetre modale
      * @throws IOException
@@ -360,12 +441,22 @@ public class MyAppController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private void modeEmploi() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(MyApp.class.getResource("modeEmploi-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 750);
+        Stage stage = new Stage();
+        stage.setTitle("Mode d'Emploi");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     /**
      * Ferme la fenetre
      */
     @FXML
-    private void fermer() {
+    private void fermer() throws IOException{
         Stage stage = (Stage) annonces.getScene().getWindow();
         stage.close();
     }
