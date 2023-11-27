@@ -15,7 +15,7 @@ public class ScrappyBot {
      */
     public static WebClient getWebClient() {
         // Creation d'un webclient
-        webClient = new WebClient(BrowserVersion.BEST_SUPPORTED);
+        webClient = new WebClient();
         // Parametrage des options
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setJavaScriptEnabled(false);

@@ -4,6 +4,7 @@ module fr.cda.immobilier {
     requires htmlunit;
     requires sib.api.v3.sdk;
     requires java.sql;
+    requires org.apache.logging.log4j;
     requires mysql.connector.j;
 
 

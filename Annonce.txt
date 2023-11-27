@@ -1,0 +1,150 @@
+Site : ouestfrance-immo.com
+Titre : 
+Surface : 0.0m²
+Prix : 0.0€
+Url de l'image : 
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 110.0m²
+Prix : 299719.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 4 pièces à Quimper
+Surface : 120.0m²
+Prix : 348471.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 85.0m²
+Prix : 357500.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison à Quimper
+Surface : 85.0m²
+Prix : 215500.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 4 pièces à Quimper
+Surface : 121.0m²
+Prix : 218325.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper Kerlaëron - Ty Bos - Ergué Sud
+Surface : 135.0m²
+Prix : 345000.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 6 pièces à Quimper
+Surface : 163.0m²
+Prix : 369500.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 3 pièces à Quimper
+Surface : 76.0m²
+Prix : 138500.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 87.0m²
+Prix : 286200.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 87.0m²
+Prix : 196100.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 92.0m²
+Prix : 257250.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 7 pièces à Quimper
+Surface : 200.0m²
+Prix : 259700.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 7 pièces à Quimper
+Surface : 198.0m²
+Prix : 347600.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper Frugy - Locmaria - Kernoter
+Surface : 82.0m²
+Prix : 234000.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 120.0m²
+Prix : 344696.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 8 pièces à Quimper
+Surface : 180.0m²
+Prix : 399900.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 122.0m²
+Prix : 294000.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 6 pièces à Quimper Centre - Rosmadec - Gare
+Surface : 104.0m²
+Prix : 175000.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 4 pièces à Quimper
+Surface : 118.0m²
+Prix : 381500.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 4 pièces à Quimper
+Surface : 120.0m²
+Prix : 445000.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 3 pièces à Quimper
+Surface : 80.0m²
+Prix : 222000.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 4 pièces à Quimper
+Surface : 93.0m²
+Prix : 233200.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 150.0m²
+Prix : 357000.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
+Site : ouestfrance-immo.com
+Titre : Vente maison 5 pièces à Quimper
+Surface : 100.0m²
+Prix : 327069.0€
+Url de l'image : https://www.ouestfrance-immo.com/img/common/nopingimg.png
+
