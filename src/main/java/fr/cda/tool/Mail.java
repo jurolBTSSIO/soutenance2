@@ -1,6 +1,7 @@
 package fr.cda.tool;
 
 import sendinblue.ApiClient;
+import sendinblue.ApiResponse;
 import sendinblue.Configuration;
 import sendinblue.auth.ApiKeyAuth;
 import sibApi.TransactionalEmailsApi;
@@ -19,8 +20,14 @@ public class Mail {
     private static final String EMAIL_SENDER = "tot@greta-bretagne-sud.fr";
     private static final String NAME_SENDER = "toto";
 
-    public static void sendEmail(String emailDest, String nomDest, String annonces) {
-
+    /**
+     * @param emailDest
+     * @param nomDest
+     * @param annonces
+     */
+    public static String sendEmail(String emailDest, String nomDest, String annonces) {
+        // Je declare une variable de retour
+        String retour = null;
         // Configure l'API client SendinBlue
         ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -66,11 +73,13 @@ public class Mail {
 
             // Envoie l'email
             CreateSmtpEmail response = api.sendTransacEmail(sendSmtpEmail);
-            System.out.println("Email envoyé avec succès : " + response);
+            retour = response.getMessageId();
+            System.out.println(response.toString());
 
         } catch (Exception e) {
             System.err.println("Une erreur s'est produite : " + e.getMessage());
         }
+        return retour;
     }
 }
 

@@ -2,47 +2,28 @@ package fr.cda.annonce;
 
 /**
  * Classe Annonce
- * @author cda
+ * @author Julien Rolland
  */
 public class Annonce {
     private int id;
-    private String titre;
-    private String description;
+    private String type;
     private double prix;
+    private String description;
     private double surface;
+    private String image;
+    private String site;
     private int id_ville;
     private int id_type;
 
-    /**
-     * Contructeur
-     * @param titre
-     * @param description
-     * @param prix
-     * @param surface
-     * @param id_ville
-     * @param id_type
-     */
-    public Annonce(String titre, String description, double prix, double surface, int id_ville, int id_type) {
-        this.titre = titre;
-        this.description = description;
+    public Annonce(String type, double prix, String description, double surface, String image, String site, int id_ville, int id_type) {
+        this.type = type;
         this.prix = prix;
+        this.description = description;
         this.surface = surface;
+        this.image = image;
+        this.site = site;
         this.id_ville = id_ville;
         this.id_type = id_type;
-    }
-
-    /**
-     * Constructeur de la classe Annnonce
-     * @param titre
-     * @param description
-     * @param prix
-     * @param surface
-     */
-    public Annonce( String titre, String description, double prix, double surface) {
-        this.titre = titre;
-        this.description = description;
-        this.prix = prix;
-        this.surface = surface;
     }
 
     /**
@@ -59,20 +40,12 @@ public class Annonce {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getType() {
+        return type;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getPrix() {
@@ -83,12 +56,20 @@ public class Annonce {
         this.prix = prix;
     }
 
-    public double getSurface() {
-        return surface;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSurface(double surface) {
-        this.surface = surface;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
     }
 
     public int getId_ville() {
@@ -107,18 +88,34 @@ public class Annonce {
         this.id_type = id_type;
     }
 
-    /**
-     * Methode toString()
-     * @return
-     */
+    public double getSurface() {
+        return surface;
+    }
+
+    public void setSurface(double surface) {
+        this.surface = surface;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Annonce{");
         sb.append("id=").append(id);
-        sb.append(", titre='").append(titre).append('\'');
-        sb.append(", description='").append(description).append('\'');
+        sb.append(", type='").append(type).append('\'');
         sb.append(", prix=").append(prix);
-        sb.append(", surface=").append(surface);
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", suface=").append(surface);
+        sb.append(", image='").append(image).append('\'');
+        sb.append(", site='").append(site).append('\'');
+        sb.append(", id_ville=").append(id_ville);
+        sb.append(", id_type=").append(id_type);
         sb.append('}');
         return sb.toString();
     }

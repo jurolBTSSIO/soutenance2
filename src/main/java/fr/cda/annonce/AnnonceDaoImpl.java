@@ -19,14 +19,16 @@ public class AnnonceDaoImpl implements AnnonceDao{
     @Override
     public void add(Annonce annonce) {
         try {
-            String sql = "INSERT INTO annonce (titre, description, prix, surface, id_ville, id_type) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO annonce (type, prix, description, surface, image, site, id_ville, id_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, annonce.getTitre());
-            statement.setString(2, annonce.getDescription());
-            statement.setDouble(3, annonce.getPrix());
+            statement.setString(1, annonce.getType());
+            statement.setDouble(2, annonce.getPrix());
+            statement.setString(3, annonce.getDescription());
             statement.setDouble(4, annonce.getSurface());
-            statement.setInt(5, annonce.getId_ville());
-            statement.setInt(6, annonce.getId_type());
+            statement.setString(5, annonce.getImage());
+            statement.setString(6, annonce.getSite());
+            statement.setInt(7, annonce.getId_ville());
+            statement.setInt(8, annonce.getId_type());
             statement.executeUpdate();
             statement.close();
         } catch (SQLException e) {
@@ -34,16 +36,22 @@ public class AnnonceDaoImpl implements AnnonceDao{
         }
     }
 
+    /**
+     *
+     * @param annonce
+     */
     @Override
     public void update(Annonce annonce) {
         try {
-            String sql = "UPDATE annonce SET titre = ?, description = ?, prix = ?, surface = ? WHERE id = ?";
+            String sql = "UPDATE annonce SET type = ?, prix = ?, description = ?, surface = ?, image = ?, site = ? WHERE id = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, annonce.getTitre());
-            statement.setString(2, annonce.getDescription());
-            statement.setDouble(3, annonce.getPrix());
+            statement.setString(1, annonce.getType());
+            statement.setDouble(2, annonce.getPrix());
+            statement.setString(3, annonce.getDescription());
             statement.setDouble(4, annonce.getSurface());
-            statement.setInt(5, annonce.getId());
+            statement.setString(5, annonce.getImage());
+            statement.setString(6, annonce.getSite());
+            statement.setInt(7, annonce.getId());
             statement.executeUpdate();
             statement.close();
         } catch (SQLException e) {
@@ -52,6 +60,11 @@ public class AnnonceDaoImpl implements AnnonceDao{
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Annonce find(int id) {
         try {
@@ -67,10 +80,12 @@ public class AnnonceDaoImpl implements AnnonceDao{
 
                 // Je lui assigne les valeurs de la base de données
                 annonce.setId(resultSet.getInt("id"));
-                annonce.setTitre(resultSet.getString("titre"));
-                annonce.setDescription(resultSet.getString("description"));
+                annonce.setType(resultSet.getString("type"));
                 annonce.setPrix(resultSet.getDouble("prix"));
+                annonce.setDescription(resultSet.getString("description"));
+                annonce.setImage(resultSet.getString("image"));
                 annonce.setSurface(resultSet.getDouble("surface"));
+                annonce.setSite(resultSet.getString("site"));
                 return annonce;
             }
         } catch (SQLException e) {
@@ -93,6 +108,18 @@ public class AnnonceDaoImpl implements AnnonceDao{
             } else {
                 System.out.println("User with ID " + id + " deleted successfully.");
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void truncate() {
+        try {
+            String sql = "TRUNCATE annonce";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

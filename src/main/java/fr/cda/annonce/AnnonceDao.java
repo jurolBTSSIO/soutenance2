@@ -5,4 +5,5 @@ public interface AnnonceDao {
     void update(Annonce annonce);
     Annonce find(int id);
     void delete(int id);
+    void truncate();
 }

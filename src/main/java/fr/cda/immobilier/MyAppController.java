@@ -1,14 +1,7 @@
 package fr.cda.immobilier;
 
-
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.html.HtmlImage;
-import fr.cda.annonce.Annonce;
-import fr.cda.annonce.AnnonceDao;
-import fr.cda.annonce.DaoFactory;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import javafx.application.Platform;
+import fr.cda.annonce.*;
+import fr.cda.exception.SaisieIncorrectException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -18,11 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import fr.cda.tool.ScrappyBot;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,14 +24,24 @@ import java.util.List;
  * @author cda
  */
 public class MyAppController {
+    private StringBuilder urlOF = new StringBuilder();
+    private String urlSL = null;
+    // Variable pour le numero de la ville
+    private String villeNumOf = null;
+    private String villeNumSeloger = null;
+    // Variable pour l'id du type
+    int idType = 0;
+    // Variable pour l'id de la ville
+    int idVille = 0;
     private AnnonceDao annonceDao;
     private String filePath;
-    private List<Annonce> annonceList;
+    public static List<Annonce> annonceList;
     private ObservableList<String> optionsType =
             FXCollections.observableArrayList(
                     "maison",
                     "appartement",
-                    "box"
+                    "terrain",
+                    "Box"
             );
     private ObservableList<String> optionsVille =
             FXCollections.observableArrayList(
@@ -85,8 +87,12 @@ public class MyAppController {
         this.types.setItems(optionsType);
         this.localisation.setItems(optionsVille);
         //Liez l'activité du bouton de recherche à la sélection de la ComboBox
-        this.recherche.disableProperty().bind(types.valueProperty().isNull());
-        this.annonceList = new ArrayList<>();
+        this.recherche.disableProperty().bind(types.valueProperty().isNull()
+                .or(localisation.valueProperty().isNull()
+                        .or(seLogerBox.selectedProperty().not()
+                                .and(ouestFranceBox.selectedProperty().not()))));
+        annonceList = new ArrayList<>();
+        this.annonces.setEditable(false);
     }
 
     /**
@@ -98,89 +104,78 @@ public class MyAppController {
         prixMini.clear();
         surfaceMax.clear();
         surfaceMin.clear();
+        types.getSelectionModel().clearSelection();
+        localisation.getSelectionModel().clearSelection();
+        seLogerBox.setSelected(false);
+        ouestFranceBox.setSelected(false);
+        annonces.setText("");
     }
 
     /**
      * Methode qui lance un script de scrapping et retourne un stringbuilder
+     *
      * @return
      */
     @FXML
-    public void handleRechercheButton() {
-        progressBar.setProgress(0);
-        Task<StringBuilder> task = new Task<>() {
-            @Override
-            protected StringBuilder call() {
-                return scrappyBot();
-            }
-            @Override
-            protected void succeeded() {
-                annonces.setText(getValue().toString());
-            }
-            @Override
-            protected void failed() {
-                System.out.println("erreur dans le thread");
-            }
-        };
-        new Thread(task).start();
-        // Exécuter une mise à jour de la barre de progression sur le thread de l'interface graphique
-        task.progressProperty().addListener((observable, oldValue, newValue) -> {
-            Platform.runLater(() -> progressBar.setProgress(newValue.doubleValue()));
-        });
+    public void handleRechercheButton() throws  IOException {
+        annonceList = new ArrayList<>();
+        setValues();
+        // Si la checkbox OF est selectionnee
+        if (ouestFranceBox.isSelected()) {
+            Task<StringBuilder> taskOF = new Task<StringBuilder>() {
+                @Override
+                protected StringBuilder call() throws SaisieIncorrectException, IOException {
+                    OuestFrance ouestFrance = new OuestFrance(getUrlOF());
+                    return ouestFrance.scrapSite();
+                }
+                @Override
+                protected void succeeded() {
+                    annonces.appendText(getValue().toString());
+                }
+                @Override
+                protected void failed() {
+                    System.out.println("erreur dans le thread");
+                }
+            };
+            new Thread(taskOF).start();
+        }
+        // Si la checkbox SL est selectionnee
+        if (seLogerBox.isSelected()) {
+            Task<StringBuilder> taskSL = new Task<StringBuilder>() {
+                @Override
+                protected StringBuilder call() throws SaisieIncorrectException, IOException {
+                    SeLoger seLoger = new SeLoger(getUrlSL());
+                    return seLoger.scrapSite();
+                }
+                @Override
+                protected void succeeded() {
+                    annonces.appendText(getValue().toString());
+                }
+                @Override
+                protected void failed() {
+                    System.out.println("erreur dans le thread");
+                }
+            };
+            new Thread(taskSL).start();
+        }
     }
 
-    /**
-     * Methode de scrapping
-     * @return
-     */
-    public StringBuilder scrappyBot() {
-        // TODO initialiser toutes les variables
-        // Je l'utilise pour mettre a jour la progressbar
-        int i = 0;
-
-        // La vaiable de type string pour la localisation
-        String localisationStr = null;
-
-        // Variable pour l'id du type
-        int idType = 0;
-
-        // Variable pour l'id de la ville
-        int idVille = 0;
-
-        // Variable pour le numero de la ville
-        String villeNumOf = null;
-        String villeNumSeloger = null;
-
-        // Je cree un stringbuilder pour retourner la recherche
-        StringBuilder retourRecherche = new StringBuilder();
-
-        // Tableau des balises ouestfrance
-        String[] balisesOF = {
-                "//a[@class='annLink']",
-                ".//span[@class='annTitre']",
-                ".//span[@class='annTexte hidden-phone']",
-                ".//span[@class='annPrix']",
-                ".//img[@class='annPhoto']",
-                ".//span[@class='annCriteres']/div"
-        };
-        // Tableau des balises seloger
-        String[] balisesSL = {
-                "//div[@data-testid='sl.explore.card-container']",
-                ".//div[@data-test='sl.title']",
-                ".//div[@data-test='sl.address']",
-                ".//div[@data-test='sl.price-label']",
-                ".//img",
-                ".//*[@data-testid='sl.explore.card-description']"
-        };
-
-
-
-        // TODO recuperer les valeurs des champs et les filtrer
-        if (localisation.getValue() != null) {
-
+    public void setValues() {
+        // J'affecte les types de biens
+        switch (types.getValue()) {
+            case "appartement":
+                idType = 1;
+                break;
+            case "maison":
+                idType = 2;
+                break;
+            case "terrain":
+                idType = 3;
+                break;
+            case "box":
+                idType = 4;
+                break;
         }
-
-
-
         // Je fais correspondre les villes et leurs numeros
         switch (localisation.getValue()) {
             case "vannes":
@@ -214,135 +209,53 @@ public class MyAppController {
                 idVille = 6;
                 break;
         }
-        // J'associe un type de bien à son id
-        switch (types.getValue()) {
-            case "appartement":
-                idType = 1;
-                break;
-            case "maison":
-                idType = 2;
-                break;
-            case "box":
-                idType = 3;
-                break;
-        }
-        // Je recupere la page web OF par son url
-        try {
-            HtmlPage pageOF = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderOuestFrance(
-                    types.getValue(),
-                    villeNumOf,
-                    prixMini.getText(),
-                    prixMaxi.getText(),
-                    surfaceMin.getText(),
-                    surfaceMax.getText())
-            );
+    }
+    public String getUrlOF() {
 
+        urlOF.append("https://www.ouestfrance-immo.com/acheter/");
 
+        // J'ajoute le type de biens
+        urlOF.append(this.types.getValue());
 
-            List<HtmlAnchor> htmlAnchors = pageOF.getByXPath("//*[@id=\"listAnnonces\"]/a");
+        // J'ajoute le separateur
+        urlOF.append("/");
 
-            for (HtmlAnchor htmlAnchor: htmlAnchors) {
-                double prixOF = 0;
-                String titreOF = "";
-                double surfaceOF = 0;
-                String descriptionOF = "";
-                String urlImgOF = "";
-                HtmlPage pageAnnonce = (HtmlPage) htmlAnchor.click();
-                HtmlElement prixElementOF = (HtmlElement) pageAnnonce.getFirstByXPath(".//span[@class='price']");
-                // Je teste si l'element est null
-                if (prixElementOF != null ) {
-                    String prixStr = prixElementOF.asNormalizedText().replace("€", "").replace(" ", "");
-                    prixOF = Double.parseDouble(prixStr);
-                }
-                HtmlElement titreElementOF = (HtmlElement) pageAnnonce.getFirstByXPath(".//h2[@class='annDescriptif fontDarkGrey']");
-                if (titreElementOF != null) {
-                    titreOF = titreElementOF.asNormalizedText();
-                }
-                HtmlElement surfaceElementOF = (HtmlElement) pageAnnonce.getFirstByXPath(".//span[@class='visible-phone-inline-block ann-criteres']/div[1]");
-                if (surfaceElementOF != null) {
-                    surfaceOF =Double.parseDouble(surfaceElementOF.asNormalizedText().replace("m²", ""));
-                }
-                HtmlElement descriptionElementOF = (HtmlElement) pageAnnonce.getFirstByXPath(".//div[@id='blockonDescriptif']");
-                if (descriptionElementOF != null) {
-                    descriptionOF = descriptionElementOF.asNormalizedText().substring(0, 50);
-                }
-                HtmlElement imgElementOF = (HtmlElement) pageAnnonce.getFirstByXPath(".//img[@class='slideimg_0']");
-                if (imgElementOF != null) {
-                    urlImgOF = imgElementOF.getAttribute("src");
-                }
-                retourRecherche.append("Site : ouestfrance-immo.com").append("\n");
-                retourRecherche.append("Titre : ").append(titreOF).append("\n");
-                retourRecherche.append("Surface : ").append(surfaceOF).append("m²").append("\n");
-                retourRecherche.append("Prix : ").append(prixOF).append("€").append("\n");
-                retourRecherche.append("Url de l'image : ").append(urlImgOF).append("\n\n");
-                this.annonceList.add(new Annonce(titreOF, descriptionOF, prixOF, 0, idVille, idType));
-                // Mettre à jour la progression à chaque itération
-                double progress = (i + 1.0) / htmlAnchors.size();
-                i++;
-                // Exécutez la mise à jour de la barre de progression sur le thread de l'interface graphique
-                Platform.runLater(() -> progressBar.setProgress(progress));
-            }
-            // Je recupere la page web SL par son url
-            HtmlPage pageSL = ScrappyBot.getWebClient().getPage(ScrappyBot.urlBuilderSeLoger(
-                    idType,
-                    villeNumSeloger,
-                    prixMini.getText(),
-                    prixMaxi.getText(),
-                    surfaceMin.getText(),
-                    surfaceMax.getText()
-            ));
-            // Je récupère toutes les divs principales de SLoger
-            List<HtmlElement> htmlElements = pageSL.getByXPath(balisesSL[0]);
-            // Je boucle dessus pour recuperer ce qui m'interresse
-            for (HtmlElement element: htmlElements) {
-                if (element != null) {
-                    String prixStr = "";
-                    String lieu = "";
-                    String description = "";
-                    String imageUrl = "";
-                    // Description
-                    HtmlElement descriptionElement = (HtmlElement) element.getFirstByXPath(balisesSL[5]);
-                    if (descriptionElement != null) {
-                        description = descriptionElement.asNormalizedText().trim();
-                    }
-                    // Lieu
-                    HtmlElement lieuElement = (HtmlElement) element.getFirstByXPath(balisesSL[2]);
-                    if (lieuElement != null) {
-                        lieu = lieuElement.asNormalizedText().trim();
-                    }
-                    // Prix
-                    HtmlElement prixElement = (HtmlElement) element.getFirstByXPath(balisesSL[3]);
-                    // Je ne recupere que la partie numerique du prix
-                    if (prixElement != null) {
-                        prixStr = prixElement.asNormalizedText().replace("€", "").replace(" ", "").trim();
-                    }
-                    // Image
-                    HtmlImage imgElement = (HtmlImage) element.getFirstByXPath(".//img");
+        // J'ajoute le ref de la ville choisie
+        urlOF.append(villeNumOf);
 
-                    if (imgElement != null) {
-                        System.out.println(imgElement.asXml());
-                        imageUrl = imgElement.getAttribute("src");
-                    }
+        // J'ajoute le parametre prix
+        urlOF.append("/?prix=");
 
-                    // J'ajoute tous au texte que je retourne
-                    retourRecherche.append("Site : seloger.com").append("\n");
-                    retourRecherche.append("Lieu : ").append(lieu).append("\n");
-                    retourRecherche.append("Description : ").append(description).append("\n");
-                    retourRecherche.append("Prix : ").append(prixStr).append("€").append("\n");
-                    retourRecherche.append("Url de l'image : ").append(imageUrl).append("\n\n");
-                    this.annonceList.add(new Annonce(lieu, description, Double.parseDouble(prixStr), 0, idVille, idType));
-                    double progress = (i + 1.0) / htmlAnchors.size();
-                    i++;
-                    // Exécutez la mise à jour de la barre de progression sur le thread de l'interface graphique
-                    Platform.runLater(() -> progressBar.setProgress(progress));
-                }
-            }
+        // J'ajoute le prix mini à l'url
+        urlOF.append(prixMini.getText());
 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        // Je retourne les annonces
-        return retourRecherche;
+        // J'ajoute le separateur prix mini / prix maxi
+        urlOF.append("_");
+
+        // J'ajoute le prix maxi
+        urlOF.append(prixMaxi.getText());
+
+        // J'ajoute le &
+        urlOF.append("&");
+
+        // J'ajoute le parametre surface
+        urlOF.append("surface=");
+
+        // J'ajoute la surface mini
+        urlOF.append(surfaceMin);
+
+        // J'ajoute le separateur surface mini / surface maxi
+        urlOF.append("_");
+
+        // J'ajoute la surface maxi
+        urlOF.append(surfaceMax);
+
+        // Je retourne l'url pour ouestfrance
+        return urlOF.toString();
+    }
+    public String getUrlSL() throws UnsupportedEncodingException {
+        // URL de Seloger.com
+        return "https://www.seloger.com/list.htm?projects=2,5&types="+ idType +"&natures=1,2,4&places=[{%22inseeCodes%22:["+ villeNumSeloger +"]}]&price="+ prixMini +"/"+ prixMaxi +"&mandatorycommodities=0&enterprise=0&qsVersion=1.0&m=homepage_buy-redirection-search_results";
     }
 
     /**
@@ -350,6 +263,7 @@ public class MyAppController {
      */
     @FXML
     private void enregistrerDansUnFichier() {
+        // J'initialise le filechooser
         FileChooser fileChooser = new FileChooser();
 
         // Configure le FileChooser
@@ -427,10 +341,14 @@ public class MyAppController {
         Stage stage = new Stage();
         stage.setTitle("Transmission des données");
         TransmissionBddController transmissionBddController = fxmlLoader.getController();
-        transmissionBddController.setAnnonceList(this.annonceList);
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * modeEmploi
+     * @throws IOException
+     */
     @FXML
     private void modeEmploi() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
