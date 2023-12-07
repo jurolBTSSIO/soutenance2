@@ -5,13 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.cda.immobilier.EnvoiCourielController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@dark.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.cda.immobilier.EnvoiCourielController">
    <children>
-      <Label layoutX="256.0" layoutY="81.0" text="Saisie du couriel" />
-      <Label layoutX="204.0" layoutY="125.0" text="Veuillez saisir l'email de l'expéditeur" />
-      <TextField fx:id="email" layoutX="178.0" layoutY="173.0" prefHeight="26.0" prefWidth="243.0" />
-      <Button layoutX="273.0" layoutY="232.0" mnemonicParsing="false" onAction="#envoyerEmail" text="Envoyer" />
-      <Button layoutX="273.0" layoutY="277.0" mnemonicParsing="false" onAction="#fermerFenetre" text="Annuler" />
+      <Label layoutX="246.0" layoutY="82.0" text="Saisie du couriel" />
+      <Label layoutX="179.0" layoutY="123.0" text="Veuillez saisir l'email de l'expéditeur" />
+      <TextField fx:id="email" layoutX="178.0" layoutY="175.0" prefHeight="26.0" prefWidth="243.0" />
+      <Button layoutX="250.0" layoutY="234.0" mnemonicParsing="false" onAction="#envoyerEmail" text="Envoyer" />
+      <Button layoutX="250.0" layoutY="279.0" mnemonicParsing="false" onAction="#fermerFenetre" text="Annuler" />
    </children>
 </AnchorPane>

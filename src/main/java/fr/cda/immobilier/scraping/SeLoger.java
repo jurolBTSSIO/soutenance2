@@ -1,10 +1,11 @@
-package fr.cda.annonce;
+package fr.cda.immobilier.scraping;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlImage;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import fr.cda.annonce.Annonce;
 import fr.cda.immobilier.MyAppController;
 
 import java.io.IOException;
@@ -32,8 +33,9 @@ public class SeLoger {
                 ".//img",
                 ".//*[@data-testid='sl.explore.card-description']"
         };
-        this.webClient.getOptions().setJavaScriptEnabled(false);
-        this.webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setJavaScriptEnabled(false);
+        webClient.getOptions().setCssEnabled(false);
+
         // Je recupere la page web SL par son url
         HtmlPage pageSL = this.webClient.getPage(url);
         //Je récupère toutes les divs principales de SLoger
@@ -78,12 +80,11 @@ public class SeLoger {
                     HtmlImage imgElement = (HtmlImage) element.getFirstByXPath(".//img");
                     if (imgElement != null) {
                         imageUrlSL = imgElement.getAttribute("src");
-                        // J'ajoute tous au texte que je retourne
                         retourRecherche.append("Site : seloger.com").append("\n");
-                        retourRecherche.append("Titre : ").append(titreSL).append("\n");
-                        retourRecherche.append("Surface : ").append(surfaceSL).append("m²").append("\n");
+                        retourRecherche.append("Type de biens : ").append(titreSL).append("\n");
+                        retourRecherche.append("Description : ").append(descriptionSL).append("\n");
                         retourRecherche.append("Prix : ").append(prixSL).append("€").append("\n");
-                        retourRecherche.append("Url de l'image : ").append(imageUrlSL).append("\n\n");
+                        retourRecherche.append("Url de l'annonce : ").append(annonceUrlSL).append("\n\n");
                         MyAppController.annonceList.add(new Annonce(titreSL, prixSL, descriptionSL, surfaceSL, imageUrlSL, annonceUrlSL, 1, 1));
                     }
                 }

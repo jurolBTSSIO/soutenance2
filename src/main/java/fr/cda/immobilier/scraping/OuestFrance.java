@@ -1,10 +1,12 @@
-package fr.cda.annonce;
+package fr.cda.immobilier.scraping;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import fr.cda.annonce.Annonce;
 import fr.cda.immobilier.MyAppController;
+import javafx.concurrent.Task;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,10 +69,10 @@ public class OuestFrance {
                 // Je filtre les annonces incomplètes
                 if ( prixOF != 0) {
                     retourRecherche.append("Site : ouestfrance-immo.com").append("\n");
-                    retourRecherche.append("Titre : ").append(titreOF).append("\n");
-                    retourRecherche.append("Surface : ").append(surfaceOF).append("m²").append("\n");
+                    retourRecherche.append("Type de bien : ").append(titreOF).append("\n");
                     retourRecherche.append("Prix : ").append(prixOF).append("€").append("\n");
-                    retourRecherche.append("Url de l'image : ").append(fetchedPhoto).append("\n\n");
+                    retourRecherche.append("Description : ").append(descriptionOF).append("\n");
+                    retourRecherche.append("Url de l'annonce : ").append(urlAnnonce).append("\n\n");
                     MyAppController.annonceList.add(new Annonce(titreOF, prixOF, descriptionOF, surfaceOF, fetchedPhoto, urlAnnonce, 1, 1));
                 }
             }

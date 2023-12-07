@@ -2,6 +2,8 @@ package fr.cda.immobilier;
 
 import fr.cda.annonce.*;
 import fr.cda.exception.SaisieIncorrectException;
+import fr.cda.immobilier.scraping.OuestFrance;
+import fr.cda.immobilier.scraping.SeLoger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -14,8 +16,6 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +33,8 @@ public class MyAppController {
     int idType = 0;
     // Variable pour l'id de la ville
     int idVille = 0;
-    private AnnonceDao annonceDao;
     private String filePath;
+    // Liste des annonces en static
     public static List<Annonce> annonceList;
     private ObservableList<String> optionsType =
             FXCollections.observableArrayList(
@@ -81,9 +81,7 @@ public class MyAppController {
      * Methode d'initialisation
      */
     @FXML
-    public void initialize() throws SQLException {
-        DaoFactory daoFactory = DaoFactory.getInstance();
-        this.annonceDao = daoFactory.getAnnonceDao();
+    public void initialize() {
         this.types.setItems(optionsType);
         this.localisation.setItems(optionsVille);
         //Liez l'activité du bouton de recherche à la sélection de la ComboBox
@@ -108,7 +106,6 @@ public class MyAppController {
         localisation.getSelectionModel().clearSelection();
         seLogerBox.setSelected(false);
         ouestFranceBox.setSelected(false);
-        annonces.setText("");
     }
 
     /**
@@ -120,11 +117,13 @@ public class MyAppController {
     public void handleRechercheButton() throws  IOException {
         annonceList = new ArrayList<>();
         setValues();
+        // Reset progress bar
+        progressBar.setProgress(0);
         // Si la checkbox OF est selectionnee
         if (ouestFranceBox.isSelected()) {
             Task<StringBuilder> taskOF = new Task<StringBuilder>() {
                 @Override
-                protected StringBuilder call() throws SaisieIncorrectException, IOException {
+                protected StringBuilder call() throws SaisieIncorrectException, IOException, InterruptedException {
                     OuestFrance ouestFrance = new OuestFrance(getUrlOF());
                     return ouestFrance.scrapSite();
                 }
@@ -137,13 +136,15 @@ public class MyAppController {
                     System.out.println("erreur dans le thread");
                 }
             };
+            //Bind progress bar property to task progress
+            progressBar.progressProperty().bind(taskOF.progressProperty());
             new Thread(taskOF).start();
         }
         // Si la checkbox SL est selectionnee
         if (seLogerBox.isSelected()) {
             Task<StringBuilder> taskSL = new Task<StringBuilder>() {
                 @Override
-                protected StringBuilder call() throws SaisieIncorrectException, IOException {
+                protected StringBuilder call() throws IOException, InterruptedException {
                     SeLoger seLoger = new SeLoger(getUrlSL());
                     return seLoger.scrapSite();
                 }
@@ -253,9 +254,9 @@ public class MyAppController {
         // Je retourne l'url pour ouestfrance
         return urlOF.toString();
     }
-    public String getUrlSL() throws UnsupportedEncodingException {
+    public String getUrlSL() {
         // URL de Seloger.com
-        return "https://www.seloger.com/list.htm?projects=2,5&types="+ idType +"&natures=1,2,4&places=[{%22inseeCodes%22:["+ villeNumSeloger +"]}]&price="+ prixMini +"/"+ prixMaxi +"&mandatorycommodities=0&enterprise=0&qsVersion=1.0&m=homepage_buy-redirection-search_results";
+        return "https://www.seloger.com/list.htm?projects=2,5&types="+ idType +"&natures=1,2,4&places=[{%22inseeCodes%22:["+ villeNumSeloger +"]}]&price="+ prixMini.getText() +"/"+ prixMaxi.getText() +"&mandatorycommodities=0&enterprise=0&qsVersion=1.0&m=homepage_buy-redirection-search_results";
     }
 
     /**
@@ -340,7 +341,6 @@ public class MyAppController {
         Scene scene = new Scene(fxmlLoader.load(), 400, 200);
         Stage stage = new Stage();
         stage.setTitle("Transmission des données");
-        TransmissionBddController transmissionBddController = fxmlLoader.getController();
         stage.setScene(scene);
         stage.show();
     }

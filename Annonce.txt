@@ -1,312 +1,151 @@
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 185750€
-Url de l'image : https://v.seloger.com/s/crop/340x220/visuels/1/i/u/l/1iul3vgbskb75bvogchtbs896g1w7leyidpymkhwg.jpg
-
-Site : seloger.com
-Titre : Kerfeunteun à Quimper (29000)
-Surface : 0.0
-Prix : 160000€
-Url de l'image : https://v.seloger.com/s/crop/340x220/visuels/1/b/q/y/1bqyvon7dw2rz3pvvbo3a2j60rpf1sxqreqnvvu75.jpg
-
-Site : seloger.com
-Titre : Penhars à Quimper (29000)
-Surface : 0.0
-Prix : 203300€
-Url de l'image : https://v.seloger.com/s/crop/340x227/visuels/1/v/9/e/1v9ezfxkaemv4toay7y71tftnm4nobv1o734zlsbk.jpg
-
-Site : seloger.com
-Titre : Quimper (29000)
-Surface : 0.0
-Prix : 981150€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Ergue Armel à Quimper (29000)
-Surface : 0.0
-Prix : 367500€
-Url de l'image : https://v.seloger.com/s/crop/166x93/visuels/1/b/g/p/1bgp4zag0y1dgcxenj7a1j64i4awfcnbksxsd16sg.jpg
-
-Site : seloger.com
-Titre : Quimper (29000)
-Surface : 0.0
-Prix : 642600€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Penhars à Quimper (29000)
-Surface : 0.0
-Prix : 322475€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 347600€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 524700€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Saint-Évarzec (29170)
-Surface : 0.0
-Prix : 351500€
-Url de l'image : https://v.seloger.com/s/crop/166x93/visuels/0/r/o/p/0roprjw9g178tww4gxt75bydr8tsf6ou19qi6jfz4.jpg
-
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 519025€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 357500€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Ergue Armel à Quimper (29000)
-Surface : 0.0
-Prix : 550000€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Ergue Armel à Quimper (29000)
-Surface : 0.0
-Prix : 159900€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Quimper (29000)
-Surface : 0.0
-Prix : 455000€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Quimper (29000)
-Surface : 0.0
-Prix : 678500€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Kerfeunteun à Quimper (29000)
-Surface : 0.0
-Prix : 241500€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 305000€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Quimper (29000)
-Surface : 0.0
-Prix : 369500€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 190850€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Ergue Armel à Quimper (29000)
-Surface : 0.0
-Prix : 43725€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Ergue Armel à Quimper (29000)
-Surface : 0.0
-Prix : 199165€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Pleuven (29170)
-Surface : 0.0
-Prix : 430500€
-Url de l'image : https://v.seloger.com/s/crop/166x93/visuels/1/f/z/2/1fz2ixfriw6l9uwu0xl6oypjxu2ol1bxstvkvbzi8.jpg
-
-Site : seloger.com
-Titre : Kerfeunteun à Quimper (29000)
-Surface : 0.0
-Prix : 181400€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Penhars à Quimper (29000)
-Surface : 0.0
-Prix : 129150€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Centre Ville à Quimper (29000)
-Surface : 0.0
-Prix : 269225€
-Url de l'image : 
-
-Site : seloger.com
-Titre : Penhars à Quimper (29000)
-Surface : 0.0
-Prix : 374000€
-Url de l'image : 
+Site : ouestfrance-immo.com
+Type de bien : Vente maison 3 pièces à Quimper
+Prix : 315021.0€
+Description : Installez-vous à Quimper dans le quartier d'Ergue Armel. Ce secteur prisé par son accès, ses transports et ses écoles, sera idéal pour une constructio
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17460361.htm
 
 Site : ouestfrance-immo.com
-Titre : 
-Surface : 0.0m²
-Prix : 0.0€
-Url de l'image : 
-
-Site : ouestfrance-immo.com
-Titre : Vente maison 5 pièces à Quimper Guerlac'h - Kermoguer - Kerfeunteun Nord - Cuzon
-Surface : 80.0m²
+Type de bien : Vente maison 5 pièces à Quimper Guerlac'h - Kermoguer - Kerfeunteun Nord - Cuzon
 Prix : 149600.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-guerlac-h-kermoguer-kerfeunteun-nord-cuzon-29/207/maison-a-vendre-quimper-guerlac-h-kermoguer-kerfeunteun-nord-cuzon-17459221_1_1701870062_ae8efc6a3f9eedbb67dfb811848b3414_rcrop_686-515_.jpg
+Description : QUIMPER, Maison de ville Kerfeunteun - Kerfeunteun, le centre ville à pied, maison en pierre, à proximité du Likès.
+ Au rez-de-chaussée, hall d'entrée
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17459221.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 5 pièces à Quimper
-Surface : 110.0m²
+Type de bien : Vente maison 5 pièces à Quimper
 Prix : 233000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17457874_1_1701832323_b41a942ffc32af21d08d520cd71d1966_rcrop_686-515_.jpg
+Description : QUIMPER - Dans le quartier de la Terre Noire, au coeur d'un bel environnement au calme, maison des années 60 d'environ 110 m2 édifiée sur un terrain d
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17457874.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper
-Surface : 143.0m²
-Prix : 455200.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17456982_1_1701813161_5e3d97f317c452762b73270ac5919fad_rcrop_686-515_.jpg
+Type de bien : Vente maison 9 pièces à Quimper Kerlaëron - Ty Bos - Ergué Sud
+Prix : 499000.0€
+Description : Sur la commune de Quimper, à quelques minutes du centre ville et 15 minutes des plages, venez découvrir cette belle propriété nichée au milieu d'un gr
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17444333.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 5 pièces à Quimper
-Surface : 118.0m²
-Prix : 367500.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17456312_1_1701873242_40a63b537f23eb740d55323e2e7f9fb3_rcrop_686-515_.jpg
+Type de bien : Vente maison 7 pièces à Quimper
+Prix : 192600.0€
+Description : Centre- ville à pieds sur le plat pour cette belle demeure de caractère. Elle offre un bel espace de vie, une cuisine aménagée et une chambre au rdc (
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17443965.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 6 pièces à Quimper
-Surface : 110.0m²
-Prix : 307400.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17456243_1_1701801121_a99a3e9267e10f4e42e251aef7648056_rcrop_686-515_.jpg
+Type de bien : Vente maison à Quimper
+Prix : 407000.0€
+Description : Face à une charmante petite forêt, venez découvrir ce magnifique terrain de 529 m². Vous serez idéalement situé à proximité des rives de l'Odet et des
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17443370.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 5 pièces à Quimper
-Surface : 89.0m²
-Prix : 285946.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17453929_1_1701732064_06a164dbf7665e56447bc30e4cafd320_rcrop_686-515_.jpg
+Type de bien : Vente maison 8 pièces à Quimper
+Prix : 214000.0€
+Description : Venez rénover cette grande et noble maison de famille élevée sur sous sol complet avec garage. Composée de 5 chambres, d'un séjour de 35 m2 traversant
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17443228.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 7 pièces à Quimper
-Surface : 160.0m²
-Prix : 473000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17440702_1_1701289387_30a5ad28e1ab62cbe6defd19f2f9c822_rcrop_686-515_.jpg
+Type de bien : Vente maison 8 pièces à Quimper
+Prix : 1219000.0€
+Description : QUIMPER. Venez découvrir cette incroyable propriété de 404 m2 aux lignes cubiques et architecturales ! Son espace de vie de 150m2, sa piscine intérieu
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17442771.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 8 pièces à Quimper
-Surface : 225.0m²
-Prix : 434000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17439557_1_1701251341_e4e803c336a1a31719d3735c1cc24a29_rcrop_686-515_.jpg
+Type de bien : Vente maison 3 pièces à Quimper
+Prix : 268900.0€
+Description : Seulement dans notre agence,
+ 
+ Cette propriété de 2003, située Quimper-Sud en direction des plages, vous convie à vous installer dans un environnemen
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17442683.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 5 pièces à Quimper Centre - Rosmadec - Gare
-Surface : 89.0m²
-Prix : 270000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-centre-rosmadec-gare-29/207/maison-a-vendre-quimper-centre-rosmadec-gare-17422795_1_1700739154_8d0fe3c193474a2e17bc18c17e0e72d5_rcrop_686-515_.jpg
+Type de bien : Vente maison à Quimper
+Prix : 273000.0€
+Description : A découvrir en impasse au calme, une maison de 126 m2 disposant de 5 chambres.
+ Edifiée en 2015 disposant au RDC d'un parking , garage et buanderie.
+ 
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17427277.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 6 pièces à Quimper Centre - Rosmadec - Gare
-Surface : 92.0m²
-Prix : 291000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-centre-rosmadec-gare-29/207/maison-a-vendre-quimper-centre-rosmadec-gare-17422793_1_1700739151_9d1579894ca6e5d1b28a74e92f1ad1a5_rcrop_686-515_.jpg
+Type de bien : Vente maison à Quimper
+Prix : 169000.0€
+Description : NOUVELLE EXCLUSIVITE A VISITER AVEC L'AGENCE DE L'ODET QUIMPER
+ Sur un terrain d'environ 300m2, petite maison entièrement refaite à neuf.
+ Pièce de vi
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17427272.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper Centre - Rosmadec - Gare
-Surface : 66.0m²
-Prix : 250000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-centre-rosmadec-gare-29/207/maison-a-vendre-quimper-centre-rosmadec-gare-17422789_1_1700739149_188106c722e84e74288af04556f69d0e_rcrop_686-515_.jpg
+Type de bien : Vente maison 6 pièces à Quimper
+Prix : 295900.0€
+Description : Exclusivité Agence. Dans le Quartier recherché du "Cap horn" proche des balades le long du halage, venez à la découverte de cette chaleureuse et atypi
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17427028.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper Centre - Rosmadec - Gare
-Surface : 69.0m²
-Prix : 249000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-centre-rosmadec-gare-29/207/maison-a-vendre-quimper-centre-rosmadec-gare-17422785_1_1700739146_10a3a5ed75cfccc6a91948b1b5f0cfa7_rcrop_686-515_.jpg
+Type de bien : Vente maison 7 pièces à Quimper
+Prix : 273000.0€
+Description : Quimper Sud, à deux pas des commerces et du réseau bus, emplacement stratégique entre l'hôpital et le centre ville Quimpérois. Impeccable maison conte
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17426605.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper Centre - Rosmadec - Gare
-Surface : 124.0m²
-Prix : 409000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-centre-rosmadec-gare-29/207/maison-a-vendre-quimper-centre-rosmadec-gare-17422781_1_1700739144_6dbd5b8af41e3c68fa4cc7745f976d9a_rcrop_686-515_.jpg
+Type de bien : Vente maison 6 pièces à Quimper
+Prix : 528000.0€
+Description : Emplacement Stratégique à mi-chemin entre Quimper (8min) Pont-l'Abbé (7min) et les plages du Sud Finistère. Sur la commune de Plomelin à deux pas des 
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17426094.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper Centre - Rosmadec - Gare
-Surface : 95.0m²
-Prix : 334000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-centre-rosmadec-gare-29/207/maison-a-vendre-quimper-centre-rosmadec-gare-17422777_1_1700739142_a4be08fd6ea7c8ede12900da414290c8_rcrop_686-515_.jpg
+Type de bien : Vente maison 5 pièces à Quimper
+Prix : 188900.0€
+Description : Quimper à seulement 10 min, sur la commune dynamique de Briec , à proximité des commerces, des écoles et infrastructures médicales (2 mn à pied), coqu
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17374945.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 3 pièces à Quimper
-Surface : 55.0m²
-Prix : 186000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17407572_2_1700226893_81e535ae66dec9c5669ae64c7729c608_rcrop_686-515_.jpg
+Type de bien : Vente maison 4 pièces à Quimper
+Prix : 214000.0€
+Description : Uniquement dans notre Agence. Quimper Est, IDEAL INVESTISSEUR OU PREMIERE ACQUISITION! Emplacement Stratégique à seulement 3minutes des commerces, de 
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17373929.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper
-Surface : 74.0m²
-Prix : 259000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17406515_1_1701312786_1696dfc7856f3f5884a5b153b95e58c7_rcrop_686-515_.jpg
+Type de bien : Vente maison 9 pièces à Quimper
+Prix : 756000.0€
+Description : Demeures Marines vous dévoile en exclusivité « Belle amie », une élégante et insoupçonnable maison de famille de 246 M2 située dans le centre de Quimp
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17361915.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 5 pièces à Quimper
-Surface : 94.0m²
-Prix : 262500.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17391169_1_1699695003_84fc5baec48a1645d1faca4b60101d1d_rcrop_686-515_.jpg
+Type de bien : Vente maison 5 pièces à Quimper
+Prix : 305000.0€
+Description : Maison contemporaine de 2014 d'une surface d'environ 105m². Située à 10min du centre-ville de Quimper dans un quartier récent. Arrêt de bus et ramassa
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17360405.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison à Quimper
-Surface : 90.0m²
-Prix : 275000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17390657_1_1699672563_e90d66f1ae54ddf34c4f6c08e4f51b78_rcrop_686-515_.jpg
+Type de bien : Vente maison 6 pièces à Quimper Penanguer - Kervilien - Penhars
+Prix : 129150.0€
+Description : EXCLUSIVITE - Quimper Ouest. Maison d'environ 100m2 comprenant 5 chambres.. Idéal pour une famille ou un investisseur souhaitant le convertir en copro
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17346903.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 3 pièces à Quimper Kermabeuzen - Moulin Vert - Penvillerc'h
-Surface : 95.0m²
-Prix : 181400.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-kermabeuzen-moulin-vert-penvillerc-h-29/207/maison-a-vendre-quimper-kermabeuzen-moulin-vert-penvillerc-h-17369383_2_1699028403_d4f5b84f69476f16398ed7bc69e4fdb8_rcrop_686-515_.jpg
+Type de bien : Vente maison 5 pièces à Quimper
+Prix : 280900.0€
+Description : EXCLUSIVITE. KERFEUNTEUN, venez découvrir cette maison entièrement rénovée avec goût proche des commerces. Elle propose salon/séjour, cuisine ouverte 
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17330880.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper
-Surface : 100.0m²
-Prix : 160500.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17344267_1_1698178323_ec8c59a2bb8fa8dfc635c29391dda29b_rcrop_686-515_.jpg
+Type de bien : Vente maison 4 pièces à Quimper
+Prix : 199900.0€
+Description : Maison de 80 m2 proche de Prat-Maria. Hall d'entrée lumineux, cuisine séparée, séjour ouvrant sur une terrasse sans vis à vis, WC, cellier comprenant 
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17330758.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 6 pièces à Quimper Guerlac'h - Kermoguer - Kerfeunteun Nord - Cuzon
-Surface : 156.0m²
-Prix : 540500.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-guerlac-h-kermoguer-kerfeunteun-nord-cuzon-29/207/maison-a-vendre-quimper-guerlac-h-kermoguer-kerfeunteun-nord-cuzon-17343908_3_1698257682_cee1cbc852ccc9ae012e8e13d6ad225a_rcrop_686-515_.jpg
+Type de bien : Vente maison 6 pièces à Quimper Centre - Rosmadec - Gare
+Prix : 322475.0€
+Description : Centre ville!. Emplacement privilégié pour cette maison familiale offrant de beaux volumes, dans un quartier à 2 pas du centre ville et des écoles (pr
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17305572.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 6 pièces à Quimper
-Surface : 120.0m²
-Prix : 275600.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17343305_1_1698158821_4821a25b8d336dd9be51d4f9f473d2ed_rcrop_686-515_.jpg
+Type de bien : Vente maison 6 pièces à Quimper
+Prix : 369000.0€
+Description : iad France - Mia Bautista vous propose : Dans le quartier recherché de KERLAGATU à Quimper, en fond d'impasse d'un quartier résidentiel particulièreme
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17269703.htm
 
 Site : ouestfrance-immo.com
-Titre : Vente maison 4 pièces à Quimper
-Surface : 92.0m²
-Prix : 262000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-29/207/maison-a-vendre-quimper-17328057_1_1697652605_b9861b95e3f7f26c202d5278ba8d6f60_rcrop_686-515_.jpg
-
-Site : ouestfrance-immo.com
-Titre : Vente maison 6 pièces à Quimper Centre - Rosmadec - Gare
-Surface : 169.0m²
-Prix : 172000.0€
-Url de l'image : https://www.ouestfrance-immo.com/photo-vente-maison-quimper-centre-rosmadec-gare-29/207/maison-a-vendre-quimper-centre-rosmadec-gare-17327684_1_1697645824_5ff4406140a1edefb8f4d880d4e8392d_rcrop_686-515_.jpg
+Type de bien : Vente maison 8 pièces à Quimper
+Prix : 259900.0€
+Description : iad France - Frédéric Thomas vous propose : Gros potentiel pour cette belle maison néo bretonne de 158 m2 environ habitable, pour y vivre à la ville t
+Url de l'annonce : https://www.ouestfrance-immo.com//immobilier/vente/maison/quimper-29-29232/17269694.htm
 
